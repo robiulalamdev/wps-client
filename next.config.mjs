@@ -2,10 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      { hostname: "api.thewallpapersociety.com" },
-      { hostname: "avatars.githubusercontent.com" },
-    ],
+    remotePatterns: [{ hostname: "api.thewallpapersociety.com" }],
   },
 };
 

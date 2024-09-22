@@ -1,17 +1,48 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "path-to-your-node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
+    "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
+      maxWidth: {
+        theme: "1920px",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        dash: {
+          bg: "#1B1B1B",
+          "cm-bg": "#121212",
+        },
+        primary: "#FBBC05",
+      },
+      fontFamily: {
+        lato: ["Lato", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        "bakbak-one": ["Bakbak One", "sans-serif"],
+        khorla: ["Khorla", "sans-serif"],
+      },
+      spacing: {
+        theme: "12px",
       },
     },
   },
+  variants: {
+    extend: {
+      display: ["group-focus", "group-hover"],
+    },
+  },
   plugins: [],
-};
+});

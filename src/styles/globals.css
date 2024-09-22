@@ -2,26 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "Khorla";
+  src: local("Khorla"), url("../assets/fonts/Khorla.ttf") format("truetype");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@import url("https://fonts.googleapis.com/css2?family=Bakbak+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  scroll-behavior: smooth !important;
+  background-color: #121212;
+}
+
+* {
+  user-drag: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+
+  /* for text selection */
+  user-select: none; /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0px !important;
+  margin: 0px !important;
+  box-sizing: border-box;
+  font-family: "Bakbak One", "Lato", "Khorla", "Roboto", sans-serif !important;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.scroll_off::-webkit-scrollbar {
+  width: 0px;
+}
+
+.scroll_off::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 0px;
+}
+
+.scroll_off::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.scroll_off {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #28292b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #151618;
+  cursor: pointer;
+}
+
+.scrollWhite::-webkit-scrollbar-thumb {
+  background-color: white !important;
+}
+
+.oneLine {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+}
+
+.twoLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.all_break {
+  word-break: break-word !important;
+}
+
+.skeleton-loader {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.skeleton-loader::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #00000057 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
   }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/** dashboard */
+/* Claim Reports */
+.claimSelectBg {
+  background: linear-gradient(90deg, rgba(227, 29, 28, 0.3) 0%, #333 100%);
 }
