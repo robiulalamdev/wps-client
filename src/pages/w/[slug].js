@@ -1,36 +1,29 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import Image from "next/image"; // Using Next.js Image for optimization
 
-const WallpaperPage = () => {
-  const router = useRouter();
-  const [data, setData] = useState(null);
+export async function getServerSideProps(context) {
+  const slug = context.params.slug; // Get slug from URL
+  const res = await fetch(
+    `https://api.thewallpapersociety.com/api/v1/wallpapers/slug/${slug}`,
+    {
+      headers: {
+        Authorization: `Bearer`,
+      },
+    }
+  );
+  const data = await res.json();
 
-  const getData = async () => {
-    fetch(
-      `https://api.thewallpapersociety.com/api/v1/wallpapers/slug/faBHDZmPz`,
-      {
-        headers: {
-          Authorization: `Bearer`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.data) {
-          setData(data?.data);
-        }
-      });
+  return {
+    props: {
+      wallpaperData: data?.data || null, // Pass fetched data to the component
+    },
   };
+}
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const imagePath = data?.wallpaper
-    ? `https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=400&height=400`
-    : "https://avatars.githubusercontent.com/u/105594633?v=4"; // fallback if no image
+const WallpaperPage = ({ wallpaperData }) => {
+  const router = useRouter();
+  const wallpaperUrl = `https://api.thewallpapersociety.com/api/v1/assets?path=${wallpaperData?.wallpaper}&width=400&height=400`;
 
   return (
     <>
@@ -57,13 +50,16 @@ const WallpaperPage = () => {
           property="og:description"
           content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
         />
-        <meta property="og:image" content={imagePath} />
-        <meta property="og:image:secure_url" content={imagePath} />
+        <meta property="og:image" content={wallpaperUrl} />
+        <meta property="og:image:secure_url" content={wallpaperUrl} />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content={400} />
         <meta property="og:image:height" content={400} />
         <meta property="og:image:alt" content="WPS - Free 4K/HD Wallpaper" />
-        <meta name="twitter:creator" content={data?.author_info?.username} />
+        <meta
+          name="twitter:creator"
+          content={wallpaperData?.author_info?.username}
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -76,15 +72,17 @@ const WallpaperPage = () => {
       </Head>
 
       <div>
-        <h1>This is wallpaper page : {router.query.slug}</h1>
-        <h1>Username : {data?.author_info?.username}</h1>
-        <Image src={imagePath} alt="WPS Wallpaper" width={400} height={400} />
-        <Image
-          src="https://avatars.githubusercontent.com/u/105594633?v=4"
-          alt="WPS Wallpaper"
-          width={400}
-          height={400}
-        />
+        <h1>Wallpaper Page</h1>
+        <h2>Username: {wallpaperData?.author_info?.username}</h2>
+        {wallpaperData && (
+          <Image
+            src={wallpaperUrl}
+            alt="Wallpaper"
+            width={400}
+            height={400}
+            // layout="responsive"
+          />
+        )}
       </div>
     </>
   );
