@@ -57,14 +57,15 @@ const WallpaperPage = () => {
         {/* OG image tags */}
         <meta
           property="og:image"
-          content={`https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=4005&height=400`}
+          content={`https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=200&height=200`}
         />
         <meta
           property="og:image:secure_url"
-          content={`https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=4005&height=400`}
+          content={`https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=200&height=200`}
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content={200} />
+        <meta property="og:image:height" content={200} />
         <meta property="og:image:alt" content={`WPS - Free 4K/HD Wallpaper`} />
         {/* Twitter tags */}
         <meta name="twitter:creator" content={data?.author_info?.username} />
