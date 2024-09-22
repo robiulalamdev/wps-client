@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import Image from "next/image"; // Using Next.js Image for optimization
 
 const WallpaperPage = () => {
   const router = useRouter();
@@ -27,10 +28,13 @@ const WallpaperPage = () => {
     getData();
   }, []);
 
+  const imagePath = data?.wallpaper
+    ? `https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=400&height=400`
+    : "https://avatars.githubusercontent.com/u/105594633?v=4"; // fallback if no image
+
   return (
     <>
       <Head>
-        {/* Standard metadata tags */}
         <title>WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society.</title>
         <link
           rel="canonical"
@@ -40,7 +44,6 @@ const WallpaperPage = () => {
           name="description"
           content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
         />
-        {/* Open Graph tags (OG) */}
         <meta
           property="og:url"
           content={`https://thewallpapersociety.com/w/${router.query.slug}`}
@@ -54,25 +57,14 @@ const WallpaperPage = () => {
           property="og:description"
           content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
         />
-        {/* OG image tags */}
-        <meta
-          property="og:image"
-          content={`https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=200&height=200`}
-        />
-        <meta
-          property="og:image:secure_url"
-          content={`https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=200&height=200`}
-        />
+        <meta property="og:image" content={imagePath} />
+        <meta property="og:image:secure_url" content={imagePath} />
         <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content={200} />
-        <meta property="og:image:height" content={200} />
-        <meta property="og:image:alt" content={`WPS - Free 4K/HD Wallpaper`} />
-        {/* Twitter tags */}
+        <meta property="og:image:width" content={400} />
+        <meta property="og:image:height" content={400} />
+        <meta property="og:image:alt" content="WPS - Free 4K/HD Wallpaper" />
         <meta name="twitter:creator" content={data?.author_info?.username} />
-        <meta
-          name="twitter:card"
-          content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-        />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
           content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
@@ -86,9 +78,12 @@ const WallpaperPage = () => {
       <div>
         <h1>This is wallpaper page : {router.query.slug}</h1>
         <h1>Username : {data?.author_info?.username}</h1>
-        <img
-          src={`https://api.thewallpapersociety.com/api/v1/assets?path=${data?.wallpaper}&width=4005&height=400`}
-          alt=""
+        <Image src={imagePath} alt="WPS Wallpaper" width={400} height={400} />
+        <Image
+          src="https://avatars.githubusercontent.com/u/105594633?v=4"
+          alt="WPS Wallpaper"
+          width={400}
+          height={400}
         />
       </div>
     </>
