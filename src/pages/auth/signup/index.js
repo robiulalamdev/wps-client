@@ -43,7 +43,7 @@ const Signup = () => {
     const result = await createUser(options);
     if (result?.data?.success) {
       if (result?.data?.type === "verify") {
-        router.push("/signup-confirmation");
+        router.push("/auth/signup-confirmation");
       }
     } else {
       if (result?.data?.type === "email") {

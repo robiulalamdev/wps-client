@@ -1,3 +1,4 @@
+import MainLayout from "@/layouts/MainLayout";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -89,3 +90,7 @@ const WallpaperPage = ({ wallpaperData }) => {
 };
 
 export default WallpaperPage;
+
+WallpaperPage.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>;
+};
