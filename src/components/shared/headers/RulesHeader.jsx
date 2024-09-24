@@ -3,21 +3,21 @@ import { iMenu, iSearch, iSearchClose } from "../../../utils/icons/icons";
 import logo from "../../../assets/brand/logo.png";
 import HeaderDrawer from "./HeaderDrawer";
 import HeaderAU from "./HeaderAU";
-import { useNavigate } from "react-router-dom";
 import HeaderProfile from "./HeaderProfile";
 import { AuthContext } from "../../../contextApi/AuthContext";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const RulesHeader = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   return (
     <>
       <div className="lg:flex items-center justify-between gap-x-[4px] md:gap-x-[20px] w-full my-[23px] hidden lg:inline-block">
         <Image
-          onClick={() => navigate("/")}
+          onClick={() => router.push("/")}
           src={logo}
           alt="logo"
           className="!w-[85px] !h-[56px] object-contain cursor-pointer"
@@ -31,7 +31,7 @@ const RulesHeader = () => {
             <input
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  navigate(`/wallpapers?search=${e.target.value}`);
+                  router.push(`/wallpapers?search=${e.target.value}`);
                 }
               }}
               type="text"
@@ -52,7 +52,7 @@ const RulesHeader = () => {
               <input
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    navigate(`/wallpapers?search=${e.target.value}`);
+                    router.push(`/wallpapers?search=${e.target.value}`);
                   }
                 }}
                 type="text"
@@ -71,7 +71,7 @@ const RulesHeader = () => {
           <div className="flex items-center justify-between gap-[10px] w-full">
             <div className="flex items-center gap-[10px] w-full">
               <Image
-                onClick={() => navigate("/")}
+                onClick={() => router.push("/")}
                 src={logo}
                 alt="logo"
                 className="w-[60px] h-[32px] object-contain"
