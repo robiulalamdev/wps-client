@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { usePostLoginMutation } from "../../../redux/features/users/usersApi";
-import { TOKEN_NAME } from "../../../lib/config";
+import { SET_TOKEN, TOKEN_NAME } from "../../../lib/config";
 import { SpinnerCircularFixed } from "spinners-react";
 import { AuthContext } from "../../../contextApi/AuthContext";
 import VerifyModal from "../../../components/common/modals/VerifyModal";
@@ -46,7 +46,7 @@ const Login = () => {
     const result = await postLogin(options);
     if (result?.data?.success) {
       if (result?.data?.data?.accessToken) {
-        localStorage.setItem(TOKEN_NAME, result?.data?.data?.accessToken);
+        SET_TOKEN(null, result?.data?.data?.accessToken);
         setUser(result?.data?.data?.user);
         router.push("/");
       }

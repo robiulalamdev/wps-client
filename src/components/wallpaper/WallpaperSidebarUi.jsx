@@ -9,7 +9,6 @@ import {
   iWallpaperClose,
 } from "../../utils/icons/icons";
 import { Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
 import useViewImage from "../../lib/hooks/useViewImage";
 import { downloadImageWithWH } from "../../lib/services/service";
 import { AuthContext } from "../../contextApi/AuthContext";
@@ -21,6 +20,7 @@ import { toast } from "react-toastify";
 import { useGetTotalFavoritesQuery } from "../../redux/features/favorites/favoritesApi";
 import { SpinnerCircularFixed } from "spinners-react";
 import VerifiedRoleIcon from "../common/global/VerifiedRoleIcon";
+import Link from "next/link";
 
 const resulations1 = {
   name: "Ultra Wide",
@@ -203,7 +203,7 @@ const WallpaperSidebarUi = ({ data }) => {
               role={data?.author_info?.role}
             />
           </div>
-          <Link to={`/profiles/${data?.author_info?.slug}`}>
+          <Link href={`/profiles/${data?.author_info?.slug}`}>
             <Button className="w-[97px] h-[32px] shadow-none hover:shadow-none text-[#fff] bg-[#000000] font-bakbak-one !text-[11px] normal-case font-normal p-0 leading-normal rounded-[15px]">
               View Profile
             </Button>
@@ -462,7 +462,7 @@ const WallpaperSidebarUi = ({ data }) => {
                 {tags?.map((tag, index) => (
                   <Link
                     key={index}
-                    to={`/tags/${tag}`}
+                    href={`/tags/${tag}`}
                     className="hover:text-[#FDF516]"
                   >
                     #{tag}{" "}
@@ -602,12 +602,12 @@ const WallpaperSidebarUi = ({ data }) => {
               </h1>
             </div>
             <div className="flex items-center justify-center gap-x-[9px] mt-[17px] pb-[7px]">
-              <Link to="/privacy-policy">
+              <Link href="/privacy-policy">
                 <h1 className="text-[#FFF] text-[10px] font-semibold font-roboto">
                   Privacy Policy
                 </h1>
               </Link>
-              <Link to="/terms-and-conditions">
+              <Link href="/terms-and-conditions">
                 <h1 className="text-[#FFF] text-[10px] font-semibold font-roboto">
                   Terms and Conditions
                 </h1>

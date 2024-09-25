@@ -1,0 +1,152 @@
+.about-container {
+  margin: 0 auto;
+}
+
+.about_mb_55_20 {
+  margin-bottom: 55px;
+}
+
+.about-container .about-title {
+  color: #fff;
+  font-family: Bakbak One;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin-bottom: 27px;
+}
+
+.about-container .about-content h1 {
+  color: #fff;
+  font-family: Bakbak One;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 80%;
+}
+
+.about_two_part_container {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 55px;
+}
+
+.about_image_container {
+  max-width: 374px;
+  border-radius: 10px !important;
+}
+
+.about-content {
+  color: #fff;
+  font-family: Bakbak One;
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.about-container .about-content h6 {
+  color: #ff006b;
+  font-family: Lato;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin: 50px 0;
+}
+
+.about-content p {
+  color: #fff;
+  font-family: Lato;
+  font-size: 20px !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: normal;
+  margin-top: 42px;
+}
+
+.wps-title {
+  color: #fff;
+  font-family: Bakbak One;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.about-container .about-img {
+  /* height: 299px; */
+  width: 374px;
+  height: 485px;
+  border-radius: 10px !important;
+}
+
+/* Responsive Design for Small Screens (Mobile Devices) */
+@media only screen and (max-width: 425px) {
+  .about-container .about-content h1 {
+    font-size: 40px;
+  }
+
+  .about-container .about-content h6 {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  .about-container .about-content p {
+    color: #fff;
+    text-align: center;
+    font-family: Lato;
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 12px;
+  }
+  .about-container .about-img {
+    height: 299px;
+    border-radius: 10px !important;
+  }
+  .about_mb_55_20 {
+    margin-bottom: 20px;
+  }
+  .about_image_container {
+    min-width: 185px !important;
+    height: 299px;
+  }
+  .about_two_part_container {
+    column-gap: 15px;
+  }
+}
+@media only screen and (min-width: 426px) and (max-width: 767px) {
+  .about-container .about-content h1 {
+    font-size: 40px;
+  }
+
+  .about-container .about-content h6 {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  .about-container .about-content p {
+    color: #fff;
+    text-align: center;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-weight: 400;
+    margin-top: 15px;
+  }
+  .about_mb_55_20 {
+    margin-bottom: 20px;
+  }
+  .about_image_container {
+    min-width: 200px !important;
+  }
+  .about_two_part_container {
+    column-gap: 25px;
+  }
+}

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { createContext, useEffect, useMemo, useState } from "react";
-import { TOKEN_NAME } from "../lib/config";
+import { DELETE_TOKEN, TOKEN_NAME } from "../lib/config";
 import { useGetUserQuery } from "../redux/features/users/usersApi";
 import { useTrackingVisitorMutation } from "../redux/features/analytics/analyticsApi";
 import Cookies from "js-cookie";
@@ -21,7 +21,8 @@ export function AuthProvider({ children }) {
   }, [data]);
 
   const logout = async () => {
-    localStorage.removeItem(TOKEN_NAME);
+    // localStorage.removeItem(TOKEN_NAME);
+    DELETE_TOKEN();
     setUser(null);
   };
 

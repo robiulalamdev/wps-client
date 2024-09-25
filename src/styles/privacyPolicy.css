@@ -1,0 +1,97 @@
+.pp-content-container {
+  max-width: 1396px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  color: #fff;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+  margin-top: 83px;
+}
+
+.pp-container .pp-title {
+  color: #fff;
+  font-family: Bakbak One;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.pp-content-container p {
+  color: #a7a7a7;
+  font-family: Lato;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pp-content-container ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+
+.pp-content-container li {
+  display: block;
+  margin-right: 10px;
+  color: #a7a7a7;
+  font-family: Lato;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pp-content-container li::before {
+  content: "\2022";
+  margin-right: 5px;
+  color: #a7a7a7;
+  font-family: Lato;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pp-content-container span {
+  color: #fff;
+  text-align: center;
+  font-family: Lato;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  padding-right: 5px;
+}
+
+/* Media query for devices with a maximum width of 767px (e.g., smartphones) */
+@media only screen and (max-width: 425px) {
+  .pp-content-container span {
+    font-size: 12px;
+  }
+  .pp-content-container li {
+    font-size: 12px;
+  }
+  .pp-content-container p {
+    font-size: 12px !important;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 767px) {
+  .pp-content-container span {
+    font-size: 12px;
+  }
+  .pp-content-container li {
+    font-size: 12px;
+  }
+  .pp-content-container p {
+    font-size: 12px !important;
+  }
+}
