@@ -10,17 +10,17 @@ import ReportDialog from "./ReportDialog";
 import MailDialog from "./MailDialog";
 import { AuthContext } from "../../contextApi/AuthContext";
 import ShareIcons from "../common/ShareIcons";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const BannerActionButtons = ({ author, brand = false }) => {
   const { user } = useContext(AuthContext);
   const [reportOpen, setReportOpen] = useState(false);
   const [mailOpen, setMailOpen] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleOpen = () => {
     if (!user) {
-      navigate("/auth/login");
+      router.push("/auth/login");
     } else {
       setMailOpen(true);
     }

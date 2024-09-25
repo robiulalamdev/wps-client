@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from "react";
@@ -61,7 +62,7 @@ const LazyWallpaper = ({
           className={`w-full h-full flex items-center justify-center bg-[#00000033] skeleton-loader overflow-hidden ${className}`}
         >
           <svg
-            className="w-[28px] h-[28px] md:w-10 md:h-10 text-[#00000033] animate-pulse"
+            className="w-[28px] h-[28px] md:w-10 md:h-10 text-[#4d494933] animate-pulse"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -78,7 +79,7 @@ const LazyWallpaper = ({
               className={`w-full h-full flex items-center justify-center bg-[#00000033] skeleton-loader ${className}`}
             >
               <svg
-                className="w-[28px] h-[28px] md:w-10 md:h-10 text-[#00000033] animate-pulse"
+                className="w-[28px] h-[28px] md:w-10 md:h-10 text-[#4d494933] animate-pulse"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -88,7 +89,23 @@ const LazyWallpaper = ({
               </svg>
             </div>
           )}
-          <div
+          <img
+            src={viewResizeImg(src, width, height, resizeMode || "")}
+            alt=""
+            // alt={alt}
+            loading="lazy"
+            // title={title}
+            width={imgWidth || "100%"}
+            height={imgHeight || "100%"}
+            style={
+              (maxWidth && { maxWidth: maxWidth },
+              maxHeight && { maxHeight: maxHeight })
+            }
+            className={`${className} ${isLoading && "!absolute opacity-0"}`}
+            onLoad={handleImageLoad}
+            onError={handleImageError}
+          />
+          {/* <div
             style={{
               width: imgWidth || "100%",
               height: imgHeight || "100%",
@@ -114,7 +131,7 @@ const LazyWallpaper = ({
               //   maxHeight && { maxHeight: maxHeight })
               // }
             />
-          </div>
+          </div> */}
         </>
       )}
     </>

@@ -3,13 +3,13 @@ import { Button } from "@material-tailwind/react";
 import SimpleHeader from "../../components/shared/headers/SimpleHeader";
 import { useMemo, useState } from "react";
 import { iSearch } from "../../utils/icons/icons";
-import { useNavigate } from "react-router-dom";
 import OfficialBrandBanner from "../../components/officialBrandProfile/OfficialBrandBanner";
 import { useGetWallpapersByUserIdQuery } from "../../redux/features/wallpapers/wallpapersApi";
 import { useGetMyCollectionsByUserIdQuery } from "../../redux/features/collections/collectionsApi";
 import LazyWallpaper from "../common/wallpaper/LazyWallpaper";
 import OfficialBrandCollectionWallpapers from "../profile/OfficialBrandCollectionWallpapers";
 import NoData from "../common/notFound/NoData";
+import { useRouter } from "next/router";
 
 const OfficialBrandProfileMain = ({ user }) => {
   const [uMeta, setUMeta] = useState({ page: 1, limit: 18, total: 0 });
@@ -26,7 +26,7 @@ const OfficialBrandProfileMain = ({ user }) => {
   const [wallpapers, setWallpapers] = useState([]);
   const [collections, setCollections] = useState([]);
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSearch = async (value) => {
     const search = value?.toLowerCase();
@@ -134,7 +134,7 @@ const OfficialBrandProfileMain = ({ user }) => {
               <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-[14px] gap-y-[14px] md:gap-x-[16px] md:gap-y-[32px] lg:gap-x-[40px] lg:gap-y-[59px] mt-[18px] md:mt-[53px]">
                 {wallpapers?.map((item, index) => (
                   <div
-                    onClick={() => navigate(`/w/${item?.slug}`)}
+                    onClick={() => router.push(`/w/${item?.slug}`)}
                     key={index}
                     className={`w-full h-[152px] md:h-[138px] rounded-[5px] md:rounded-[7px] lg:rounded-[10px] overflow-hidden relative`}
                   >

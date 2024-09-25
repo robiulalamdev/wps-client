@@ -20,7 +20,7 @@ import {
 import filter from "../../assets/icons/search-wallpapers/filter.gif";
 import { resolutions } from "../../utils/data/data";
 import SearchWallpapersDrawer from "./SearchWallpapersDrawer";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const tabs1 = ["Trending", "New"];
 const tabs2 = ["All", "Illustration", "Photography", "AI"];
@@ -29,15 +29,13 @@ const tabs3 = ["SFW", "NSFW"];
 const SearchWallpapersTabs = ({ tab1, tab2, tab3, handleQuery }) => {
   const [open, setOpen] = useState(false);
   const [dimensions, setDimensions] = useState({ width: null, height: null });
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
 
-  const navigate = useNavigate();
-
-  const height = searchParams.get("height");
-  const width = searchParams.get("width");
-  const screen_type = searchParams.get("screen_type");
-  const sort_by = searchParams.get("sort_by");
-  const date = searchParams.get("date");
+  const height = router.query?.height;
+  const width = router.query?.width;
+  const screen_type = router.query?.screen_type;
+  const sort_by = router.query?.sort_by;
+  const date = router.query?.date;
 
   return (
     <>
@@ -342,7 +340,9 @@ const SearchWallpapersTabs = ({ tab1, tab2, tab3, handleQuery }) => {
                       Auto Detection
                     </h1>
                     <h1 className="text-center text-[12px] font-lato font-medium text-[#FFF] mt-[7px]">
-                      Your screen resolution is {screen.width} × {screen.height}
+                      Your screen resolution is{" "}
+                      {typeof window !== "undefined" &&
+                        screen.width + " × " + screen.height}
                       .
                     </h1>
                     <h1 className="text-center text-[12px] font-lato text-[#FFF] mt-[25px]">
@@ -574,8 +574,7 @@ const SearchWallpapersTabs = ({ tab1, tab2, tab3, handleQuery }) => {
             </Popover>
             <Button
               onClick={() => {
-                navigate("");
-                window.location.reload();
+                router.push("/wallpapers");
               }}
               className="shadow-none hover:shadow-none normal-case min-w-[57px] max-w-[57px] h-[42px] bg-[#00000033] rounded-[9px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center items-center p-0"
             >

@@ -18,21 +18,20 @@ import {
   iTablet,
 } from "../../utils/icons/icons";
 import { resolutions } from "../../utils/data/data";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const tabs2 = ["All", "Illustration", "Photography", "AI"];
 
 const SearchWallpapersDrawer = ({ open, setOpen, tab2, tab3, handleQuery }) => {
   const [dimensions, setDimensions] = useState({ width: null, height: null });
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
 
-  const navigate = useNavigate();
+  const height = router?.query?.height;
+  const width = router?.query?.width;
+  const screen_type = router?.query?.screen_type;
+  const sort_by = router?.query?.sort_by;
+  const date = router?.query?.date;
 
-  const height = searchParams.get("height");
-  const width = searchParams.get("width");
-  const screen_type = searchParams.get("screen_type");
-  const sort_by = searchParams.get("sort_by");
-  const date = searchParams.get("date");
   return (
     <>
       <Drawer

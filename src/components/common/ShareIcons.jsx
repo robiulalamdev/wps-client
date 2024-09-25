@@ -13,12 +13,13 @@ import {
   iShare6,
 } from "../../utils/icons/icons";
 import { toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
 import { useMemo, useState } from "react";
 import { CLIENT_URL } from "../../lib/config";
+import { useRouter } from "next/router";
 
 const ShareIcons = ({ author }) => {
-  const { pathname } = useLocation();
+  const router = useRouter();
+  const pathname = router.pathname;
   const [url, setUrl] = useState("");
 
   useMemo(() => {

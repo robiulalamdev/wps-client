@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useRouter } from "next/router";
 import LazyWallpaper from "../common/wallpaper/LazyWallpaper";
-import { useNavigate } from "react-router-dom";
 // import SeenOverlay from "../common/SeenOverlay";
 
 const SingleSearchWallpaper = ({ item = null }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   // const [open, setOpen] = useState(item.isFeatured ? true : false);
   return (
     <>
       <div
-        onClick={() => navigate(`/w/${item?.slug}`)}
-        // onClick={() => (open ? setOpen(false) : navigate(`/w/${item?.slug}`))}
+        onClick={() => router.push(`/w/${item?.slug}`)}
+        // onClick={() => (open ? setOpen(false) : router.push(`/w/${item?.slug}`))}
         className={`w-full h-[152px] md:h-[170px] rounded-[5px] md:rounded-[10px] lg:rounded-[15px] overflow-hidden relative`}
       >
         <LazyWallpaper

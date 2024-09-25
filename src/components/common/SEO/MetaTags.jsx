@@ -8,8 +8,8 @@ const MetaTags = ({
   image = "https://avatars.githubusercontent.com/u/105594633?v=4",
   url = "https://thewallpapersociety.com",
   username = "",
-  height = 200,
-  width = 200,
+  height = 400,
+  width = 400,
 }) => {
   return (
     <Head>
@@ -18,35 +18,20 @@ const MetaTags = ({
       <meta name="description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
-      <meta
-        property="og:title"
-        content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-      />
-      <meta
-        property="og:description"
-        content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-      />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:image:secure_url" content={image} />
       <meta property="og:image:type" content="image/jpeg" />
-      <meta property="og:image:width" content={400} />
-      <meta property="og:image:height" content={400} />
+      <meta property="og:image:width" content={width} />
+      <meta property="og:image:height" content={height} />
       <meta property="og:image:alt" content="WPS - Free 4K/HD Wallpaper" />
 
       {/* for twitter */}
       <meta name="twitter:creator" content={username} />
-      <meta
-        name="twitter:card"
-        content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-      />
-      <meta
-        name="twitter:title"
-        content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-      />
-      <meta
-        name="twitter:description"
-        content="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-      />
+      <meta name="twitter:card" content={title} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
       <meta name="twitter:site" content={url} />
       <meta name="twitter:image" content={image} />
     </Head>

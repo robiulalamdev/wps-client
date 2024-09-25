@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { socialLinkItems } from "../../lib/data/globalData";
 import {
   iShare1,
@@ -24,7 +24,7 @@ const OfficialBrandProfileSocial = ({ author }) => {
                 <Link
                   key={index}
                   target="_blank"
-                  to={author?.profile?.socials[item[0]]}
+                  href={author?.profile?.socials[item[0]]}
                   className="cursor-pointer"
                 >
                   <img

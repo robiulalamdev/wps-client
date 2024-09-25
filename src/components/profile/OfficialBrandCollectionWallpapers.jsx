@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { iBackArrow } from "../../utils/icons/icons";
-import { useNavigate } from "react-router-dom";
 import LazyWallpaper from "../common/wallpaper/LazyWallpaper";
 import useViewImage from "../../lib/hooks/useViewImage";
 import { mediaCollectionStyles } from "../../lib/services/service";
 import NoData from "../common/notFound/NoData";
+import { useRouter } from "next/router";
 
 const OfficialBrandCollectionWallpapers = ({ collections = [] }) => {
   const { viewResizeImg } = useViewImage();
   const [selectedCollection, setSelectedCollection] = useState(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <>
       <div
@@ -35,7 +35,7 @@ const OfficialBrandCollectionWallpapers = ({ collections = [] }) => {
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-[14px] gap-y-[14px] md:gap-x-[16px] md:gap-y-[32px] lg:gap-x-[40px] lg:gap-y-[59px] mt-[8px] md:mt-[14px]">
             {selectedCollection?.wallpapers?.map((item, index) => (
               <div
-                onClick={() => navigate(`/w/${item?.slug}`)}
+                onClick={() => router.push(`/w/${item?.slug}`)}
                 key={index}
                 className={`w-full h-[152px] md:h-[138px] rounded-[5px] md:rounded-[7px] lg:rounded-[10px] overflow-hidden relative`}
               >
