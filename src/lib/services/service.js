@@ -2,6 +2,7 @@ import { BASE_URL, TOKEN_NAME } from "../config";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { debounce } from "lodash";
+import nookies from "nookies";
 
 export const getImageDimensions = (image) => {
   return new Promise((resolve, reject) => {
@@ -239,7 +240,7 @@ export const handleWallpaperUploadWithProgress = async (
     return axios
       .post(`${BASE_URL}/wallpapers/upload/single`, formData, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem(TOKEN_NAME)}`,
+          Authorization: `Bearer ${nookies.get()[TOKEN_NAME]}`,
         },
         onUploadProgress: (event) => {
           storedFiles[index]["progress"] = Math.round(

@@ -7,7 +7,6 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers) => {
-      // const token = `Bearer ${localStorage.getItem(TOKEN_NAME)}`;
       const token = `Bearer ${nookies.get()[TOKEN_NAME]}`;
       if (token) {
         headers.set("Authorization", token);

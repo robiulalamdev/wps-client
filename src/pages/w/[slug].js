@@ -114,7 +114,7 @@ const Wallpaper = ({ wallpaperData }) => {
   };
 
   useEffect(() => {
-    if (data?._id) {
+    if (reduxWallData?.data?._id) {
       if (permit) {
         setPermit(false);
         setTimeout(() => {
@@ -122,7 +122,7 @@ const Wallpaper = ({ wallpaperData }) => {
         }, 5000);
       }
     }
-  }, [data]);
+  }, [reduxWallData?.data]);
 
   useEffect(() => {
     if (reduxWallData?.data?._id) {
