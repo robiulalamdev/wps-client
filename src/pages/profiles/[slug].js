@@ -47,19 +47,21 @@ const PublicProfile = ({ userData }) => {
 
   return (
     <>
-      <MetaTags
-        title={`${data?.username}'s Wallpaper Haven: Discover High-Quality Images on WPS`}
-        description={`Explore ${data?.username}'s collection of stunning wallpapers on WPS. Enjoy ad-free browsing and join our community of image enthusiasts.`}
-        image={
-          data?.profile?.profile_image
-            ? viewResizeImg(data?.profile?.profile_image, 400, 400)
-            : viewResizeImg(data?.profile?.banner, 400, 400)
-        }
-        url={`${CLIENT_URL}/profiles/${slug}`}
-        username={data?.username}
-        width={400}
-        height={400}
-      />
+      {data?._id && (
+        <MetaTags
+          title={`${data?.username}'s Wallpaper Haven: Discover High-Quality Images on WPS`}
+          description={`Explore ${data?.username}'s collection of stunning wallpapers on WPS. Enjoy ad-free browsing and join our community of image enthusiasts.`}
+          image={
+            data?.profile?.profile_image
+              ? viewResizeImg(data?.profile?.profile_image, 400, 400)
+              : viewResizeImg(data?.profile?.banner, 400, 400)
+          }
+          url={`${CLIENT_URL}/profiles/${slug}`}
+          username={data?.username}
+          width={400}
+          height={400}
+        />
+      )}
       {isLoading ? (
         <PageLoading />
       ) : (
