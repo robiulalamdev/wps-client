@@ -4,7 +4,7 @@ const PageLoading = () => {
   return (
     <div className="h-screen w-full flex justify-center items-center">
       <img
-        src={spinner}
+        src={spinner.src}
         alt=""
         className="max-w-[288px] max-h-[288px] object-contain"
       />

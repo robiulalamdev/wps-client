@@ -2,20 +2,20 @@ import { useContext, useState } from "react";
 import { iMenu } from "../../../utils/icons/icons";
 import logo from "../../../assets/brand/logo.png";
 import HeaderDrawer from "./HeaderDrawer";
-import { useNavigate } from "react-router-dom";
 import HeaderProfile from "./HeaderProfile";
 import { AuthContext } from "../../../contextApi/AuthContext";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const TitleHeader = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   return (
     <>
       <div className="lg:flex items-center justify-between gap-x-[4px] md:gap-x-[20px] w-full mt-[23px] mb-[18px] hidden lg:inline-block">
         <Image
-          onClick={() => navigate("/")}
+          onClick={() => router.push("/")}
           src={logo}
           alt="logo"
           className="!w-[85px] !h-[56px] object-contain cursor-pointer"
@@ -31,7 +31,7 @@ const TitleHeader = () => {
       <div className="lg:hidden my-[23px]">
         <div className="flex items-center justify-between gap-[10px] w-full">
           <Image
-            onClick={() => navigate("/")}
+            onClick={() => router.push("/")}
             src={logo}
             alt="logo"
             className="w-[60px] h-[32px] object-contain"
