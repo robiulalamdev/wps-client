@@ -35,7 +35,7 @@ const PublicProfile = ({ userData }) => {
   const { viewResizeImg } = useViewImage();
   const router = useRouter();
   const [data, setData] = useState(userData?.data || null);
-  const { slug } = router.query?.slug;
+  const slug = router.query?.slug;
   const { data: reduxData, isLoading } = useGetPublicUserInfoQuery(slug);
   // console.log(data);
 
