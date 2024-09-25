@@ -5,6 +5,7 @@ import ProfileMain from "../../components/profile/ProfileMain";
 import OfficialBrandProfileMain from "../../components/officialBrandProfile/OfficialBrandProfileMain";
 import { ROLE_DATA } from "../../lib/config";
 import MainLayout from "@/layouts/MainLayout";
+import PrivateRoute from "@/middlewares/PrivateRoute";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -19,8 +20,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
-
-Profile.getLayout = function getLayout(page) {
-  return <MainLayout>{page}</MainLayout>;
-};
+export default PrivateRoute(Profile, MainLayout);
