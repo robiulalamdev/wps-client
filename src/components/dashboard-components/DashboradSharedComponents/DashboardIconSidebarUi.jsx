@@ -13,14 +13,15 @@ import {
   sideLogoCircle,
 } from "../../../utils/icons/dashboard-icons/dashicons";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
 import { DefaultProfile } from "../../../lib/data/globalData";
 import { setIsOpen } from "../../../redux/features/global/globalSlice";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const DashboardIconSidebarUi = () => {
   const { isOpen } = useSelector((state) => state.global);
   const dispatch = useDispatch();
-  const location = useLocation();
+  const router = useRouter();
 
   return (
     <>
@@ -33,11 +34,11 @@ const DashboardIconSidebarUi = () => {
             <div className="mt-[55px]">
               <div className="grid grid-cols-1 gap-y-[15px] mt-[27px]">
                 {sidebarItems.map((item, index) => (
-                  <Link to={`${item.path}`} key={index}>
+                  <Link href={`${item.path}`} key={index}>
                     <Button
                       className={`flex items-center justify-center normal-case font-lato font-normal text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap w-full h-[43px] shadow-none hover:shadow-none outline-none 
                     ${
-                      location.pathname === item.path
+                      router.pathname === item.path
                         ? "bg-[#FF001F] rounded-[10px]"
                         : "bg-transparent"
                     }
@@ -62,7 +63,7 @@ const DashboardIconSidebarUi = () => {
                   <Button
                     className={`flex items-center justify-center normal-case font-lato font-normal text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap w-full h-[43px] shadow-none hover:shadow-none outline-none 
                     ${
-                      location.pathname === item.path
+                      router.pathname === item.path
                         ? "bg-[#FF001F] rounded-[10px]"
                         : "bg-transparent"
                     }

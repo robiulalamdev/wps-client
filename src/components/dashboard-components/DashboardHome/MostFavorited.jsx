@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import useViewImage from "../../../lib/hooks/useViewImage";
 import { useGetTopThreeFavoritesQuery } from "../../../redux/features/wallpapers/wallpapersApi";
 
@@ -13,7 +13,7 @@ const MostFavorited = () => {
       </h1>
       <div className="flex justify-center items-center gap-[10px] mt-[21px] cursor-pointer">
         {data?.data?.map((item, index) => (
-          <Link key={index}>
+          <Link key={index} href={`/w/${item?.slug}`} target="_blank">
             <div className="flex flex-col justify-center items-center gap-[6px] h-full max-w-[122px] min-w-[122px] w-full">
               <img
                 src={viewResizeImg(item?.wallpaper, 122, 60)}

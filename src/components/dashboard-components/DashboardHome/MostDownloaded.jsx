@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import useViewImage from "../../../lib/hooks/useViewImage";
 import { useGetMostDownloadedQuery } from "../../../redux/features/wallpapers/wallpapersApi";
 
@@ -14,7 +14,7 @@ const MostDownloaded = () => {
         {data?.data?.map((item, index) => (
           <Link
             target="_blank"
-            to={`/w/${item?.slug}`}
+            href={`/w/${item?.slug}`}
             key={index}
             className=""
           >

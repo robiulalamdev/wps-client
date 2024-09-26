@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useGetTopCategoriesQuery } from "../../../redux/features/wallpapers/wallpapersApi";
 
 // const categories = [
@@ -27,7 +27,7 @@ const TopCategories = () => {
         {data?.data?.map((item, index) => (
           <Link
             target="_blank"
-            to={`/tags/${item}`}
+            href={`/tags/${item}`}
             key={index}
             className="flex flex-col justify-center items-center gap-[6px] max-w-[103px] w-full px-1 h-[34px] rounded-[5px] bg-[#181818] hover:bg-[#FF001F] duration-150 cursor-pointer"
           >

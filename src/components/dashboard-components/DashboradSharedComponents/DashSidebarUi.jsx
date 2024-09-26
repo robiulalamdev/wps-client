@@ -5,13 +5,14 @@ import {
   iDashSideHr,
   sideLogoCircle,
 } from "../../../utils/icons/dashboard-icons/dashicons";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { DefaultProfile } from "../../../lib/data/globalData";
 import { useContext } from "react";
 import { AuthContext } from "../../../contextApi/AuthContext";
 import { ROLE_DATA } from "../../../lib/config";
 import useViewImage from "../../../lib/hooks/useViewImage";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const DashSidebarUi = () => {
   const { user, logout } = useContext(AuthContext);
@@ -19,8 +20,7 @@ const DashSidebarUi = () => {
   const { isOpen } = useSelector((state) => state.global);
   const { totalReports } = useSelector((state) => state.report);
   const { totalRequests } = useSelector((state) => state.verification);
-  const dispatch = useDispatch();
-  const location = useLocation();
+  const router = useRouter();
 
   return (
     <>
@@ -40,11 +40,11 @@ const DashSidebarUi = () => {
 
               <div className="grid grid-cols-1 gap-y-[15px] mt-[27px]">
                 {sidebarItems.map((item, index) => (
-                  <Link to={`${item.path}`} key={index}>
+                  <Link href={`${item.path}`} key={index}>
                     <Button
                       className={`flex items-center gap-x-[8px] normal-case font-lato font-normal text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap w-full h-[43px] pl-[12px] shadow-none hover:shadow-none outline-none 
                     ${
-                      location.pathname === item.path
+                      router.pathname === item.path
                         ? "bg-[#FF001F] rounded-[10px]"
                         : "bg-transparent"
                     }
@@ -69,11 +69,11 @@ const DashSidebarUi = () => {
 
             <div className="grid grid-cols-1 gap-y-[15px] mt-[22px] h-fit">
               {sidebarBottomItems.map((item, index) => (
-                <Link to={`${item.path}`} key={index}>
+                <Link href={`${item.path}`} key={index}>
                   <Button
                     className={`flex items-center gap-x-[8px] normal-case font-lato font-normal text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap w-full h-[43px] pl-[12px] shadow-none hover:shadow-none outline-none 
                     ${
-                      location.pathname === item.path
+                      router.pathname === item.path
                         ? "bg-[#FF001F] rounded-[10px]"
                         : "bg-transparent"
                     }
@@ -83,7 +83,7 @@ const DashSidebarUi = () => {
                       {item.icon}
                     </div>{" "}
                     <span>{item.name}</span>
-                    {location.pathname !== item.path && (
+                    {router.pathname !== item.path && (
                       <>
                         {item?.name === "Claims / Reports" &&
                           totalReports > 0 && (
