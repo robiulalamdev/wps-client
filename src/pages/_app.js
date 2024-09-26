@@ -4,6 +4,7 @@ import store from "@/redux/store";
 import "@/styles/globals.css";
 import "@/styles/contact.css";
 import "@/styles/about.css";
+import "@/styles/termsCondition.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
