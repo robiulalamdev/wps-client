@@ -30,7 +30,7 @@ const SponsorWallpaper = ({ items = [] }) => {
               className={`w-full h-[115px] rounded-[10px] relative`}
             >
               <div className="w-full h-full !bg-black !bg-opacity-80 rounded-[10px] !absolute top-0 left-0 cursor-pointer">
-                <img src={overlay} alt="" className="w-full h-full" />
+                <img src={overlay.src} alt="" className="w-full h-full" />
               </div>
             </div>
           ))}

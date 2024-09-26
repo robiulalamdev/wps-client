@@ -29,13 +29,13 @@ const FeaturedViewWallpaper = ({
         />
       ) : (
         <div className="w-full h-full !bg-black !bg-opacity-80 rounded-[10px] !absolute top-0 left-0 cursor-pointer">
-          <img src={overlay} alt="" className="w-full h-full" />
+          <img src={overlay.src} alt="" className="w-full h-full" />
         </div>
       )}
 
       {!isExist && (
         <div className="w-full h-full !bg-black !bg-opacity-80 rounded-[10px] !absolute top-0 left-0 cursor-pointer">
-          <img src={overlay} alt="" className="w-full h-full" />
+          <img src={overlay.src} alt="" className="w-full h-full" />
         </div>
       )}
 
