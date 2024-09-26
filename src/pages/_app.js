@@ -11,6 +11,7 @@ import "@/styles/messages.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import DisabledUserAction from "@/components/common/global/DisabledUserAction";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -35,6 +36,7 @@ export default function App({ Component, pageProps }) {
               style={{ zIndex: "999999999999999" }}
             />
             {getLayout(<Component {...pageProps} />)}
+            <DisabledUserAction />
           </SocketProvider>
         </AuthProvider>
       </Provider>
