@@ -7,11 +7,11 @@ import { AuthContext } from "../../contextApi/AuthContext";
 import { useUpdateProfileTabInfoMutation } from "../../redux/features/users/usersApi";
 import { SpinnerCircularFixed } from "spinners-react";
 import useViewImage from "../../lib/hooks/useViewImage";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { DefaultProfile, socialLinkItems } from "../../lib/data/globalData";
 import { validateImageSize } from "../../lib/services/service";
 import { FIELD_VALIDATIONS } from "../../lib/config";
+import { useRouter } from "next/router";
 
 const AccountSettingProfileTab = () => {
   const { user } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const AccountSettingProfileTab = () => {
   const [updateProfileTabInfo, { isLoading }] =
     useUpdateProfileTabInfoMutation();
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const { viewImg } = useViewImage();
 
@@ -146,7 +146,7 @@ const AccountSettingProfileTab = () => {
       <div className="hidden md:block min-w-[147px] max-w-[147px] absolute top-[27px] right-[41px]">
         {user?.verification_status === false && (
           <Button
-            onClick={() => navigate("/account-verification")}
+            onClick={() => router.push("/account-verification")}
             className="font-normal normal-case bg-[#00000080] backdrop-blur w-[147px] h-[38px] rounded-[100px] hover:shadow-none shadow-none font-lato text-[12px] text-[#FFFFFF80] p-0 hidden md:block"
           >
             Request Verification
@@ -227,7 +227,7 @@ const AccountSettingProfileTab = () => {
                 placeholder="KRS"
                 required={true}
               />
-              <img src={info} alt="profile" className="size-[18px]" />
+              <img src={info.src} alt="profile" className="size-[18px]" />
             </div>
             {errors?.username && (
               <h1 className="font-lato text-[10px] text-[#fd0303] mt-[5px] text-center">
@@ -267,7 +267,7 @@ const AccountSettingProfileTab = () => {
               }`}
             >
               <img
-                src={item[1].icon}
+                src={item[1].icon.src}
                 alt="icon"
                 className="max-w-[25px] object-contain"
               />
@@ -288,7 +288,7 @@ const AccountSettingProfileTab = () => {
           {user?.verification_status === false && (
             <Button
               type="button"
-              onClick={() => navigate("/account-verification")}
+              onClick={() => router.push("/account-verification")}
               className="font-normal normal-case bg-[#00000080] w-[147px] h-[38px] rounded-[100px] mx-auto mt-[47px] hover:shadow-none shadow-none font-lato text-[12px] text-[#FFFFFF80] block p-0 md:hidden"
             >
               Request Verification

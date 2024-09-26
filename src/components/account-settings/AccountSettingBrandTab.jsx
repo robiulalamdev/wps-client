@@ -3,7 +3,6 @@ import { useContext, useMemo, useRef, useState } from "react";
 import bannerImg from "../../assets/images/profile-settings/banner.png";
 import { Button } from "@material-tailwind/react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { useUpdateBrandTabInfoMutation } from "../../redux/features/users/usersApi";
 import { useForm } from "react-hook-form";
 import useViewImage from "../../lib/hooks/useViewImage";
