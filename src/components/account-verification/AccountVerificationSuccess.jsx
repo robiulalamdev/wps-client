@@ -1,5 +1,5 @@
 import { Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const AccountVerificationSuccess = () => {
   return (
@@ -13,7 +13,7 @@ const AccountVerificationSuccess = () => {
           contact you via email.
         </p>
       </div>
-      <Link to="/">
+      <Link href="/">
         <Button className="font-normal normal-case bg-[#2924FF] w-[129px] h-[38px] rounded-[5px] mx-auto mt-[23px] hover:shadow-none shadow-none font-bakbak-one text-[15px] text-[#C4C4C4] block p-0">
           Home
         </Button>
