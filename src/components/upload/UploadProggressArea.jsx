@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {
   iCheck,
   iChecked,
@@ -9,11 +9,12 @@ import {
   iFiledGalary,
   iUploadUp,
 } from "../../utils/icons/icons";
-import { Link, useNavigate } from "react-router-dom";
 import { useSettingsChangeMutation } from "../../redux/features/users/usersApi";
 import { handleWallpaperUploadWithProgress } from "../../lib/services/service";
 import WPSSpinner from "../common/loadings/WPSSpinner";
 import { useGetMyDraftWallpapersQuery } from "../../redux/features/wallpapers/wallpapersApi";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const UploadProggressArea = ({
   step,
@@ -29,7 +30,7 @@ const UploadProggressArea = ({
 
   const { refetch } = useGetMyDraftWallpapersQuery(`?page=${1}&limit=${0}`);
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleClose = (index) => {
     let data = [...files];
@@ -71,7 +72,7 @@ const UploadProggressArea = ({
             proceeding. Your cooperation is greatly appreciated.
           </p>
 
-          <Link to="/community-rules">
+          <Link href="/community-rules">
             <h1 className="text-center font-bakbak-one text-[12px] md:text-[15px] text-[#FF2E00] mt-[13px] md:mt-[53px]">
               Click to Read the Community Rules
             </h1>
@@ -198,7 +199,7 @@ const UploadProggressArea = ({
 
               {upload && (
                 <div
-                  onClick={() => navigate("/vault")}
+                  onClick={() => router.push("/vault")}
                   className={`bg-[#DD2E44] w-[129px] h-[38px] rounded-[5px] text-[#C4C4C4] text-[15px] font-bakbak-one flex justify-center items-center cursor-pointer`}
                 >
                   Continue
