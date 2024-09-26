@@ -5,10 +5,10 @@ import { Button } from "@material-tailwind/react";
 import { DefaultProfile } from "../../../lib/data/globalData";
 import moment from "moment";
 import useViewImage from "../../../lib/hooks/useViewImage";
-import { Link } from "react-router-dom";
 import { useModifyVerificationMutation } from "../../../redux/features/verification/verificationApi";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import Link from "next/link";
 
 const VerificationRequestDetails = ({
   data = null,
@@ -111,7 +111,7 @@ const VerificationRequestDetails = ({
           )}
 
           {selectedTab === "Reviewed" && (
-            <Link to="/messages">
+            <Link href="/messages">
               <Button className="bg-[#0500FF] text-white p-0 w-[103px] h-[36px] rounded-[5px] hover:shadow-none shadow-none normal-case font-lato text-[12px] font-medium leading-normal">
                 Send to Inbox
               </Button>
