@@ -8,11 +8,11 @@ import wallpaper from "../../../assets/images/dashboard-images/claim-reports/wal
 import useViewImage from "../../../lib/hooks/useViewImage";
 import moment from "moment";
 import LazyWallpaper from "../../common/wallpaper/LazyWallpaper";
-import { Link } from "react-router-dom";
 import { useModifyReportMutation } from "../../../redux/features/reports/reportsApi";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { REPORT_TYPES } from "../../../lib/config";
+import Link from "next/link";
 
 const ClaimDetails = ({
   data = null,
@@ -173,7 +173,7 @@ const ClaimDetails = ({
           </h1>
           <div className="mt-[16px] flex items-start gap-x-[26px]">
             {data?.data?.wallpaper && (
-              <Link to={`/w/${data?.data?.slug}`} className="relative">
+              <Link href={`/w/${data?.data?.slug}`} className="relative">
                 <LazyWallpaper
                   src={data?.data?.wallpaper}
                   alt=""
