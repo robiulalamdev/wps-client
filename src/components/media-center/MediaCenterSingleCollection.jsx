@@ -39,9 +39,9 @@ const MediaCenterSingleCollection = ({
             </>
           ) : (
             <img
-              src={emptyCollection}
+              src={emptyCollection.src}
               alt="wallpaper"
-              className="w-full h-full object-fill cursor-pointer col-span-2"
+              className="w-full h-full object-fill cursor-pointer col-span-full row-span-full"
             />
           )}
         </div>
