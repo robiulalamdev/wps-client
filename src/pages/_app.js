@@ -6,6 +6,7 @@ import "@/styles/contact.css";
 import "@/styles/about.css";
 import "@/styles/termsCondition.css";
 import "@/styles/privacyPolicy.css";
+import "@/styles/communityRules.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
