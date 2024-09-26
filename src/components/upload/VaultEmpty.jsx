@@ -1,8 +1,8 @@
+import { useRouter } from "next/router";
 import { iUploadUp } from "../../utils/icons/icons";
-import { useNavigate } from "react-router-dom";
 
 const VaultEmpty = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <>
       <div className="w-full h-full flex flex-col justify-center items-center gap-y-[32px] md:gap-y-[61px] mt-[80px] md:mt-[183px]">
@@ -10,7 +10,7 @@ const VaultEmpty = () => {
           Your vault is currently empty
         </h1>
         <div
-          onClick={() => navigate("/upload")}
+          onClick={() => router.push("/upload")}
           className={`bg-[#2924FF] w-[129px] h-[38px] rounded-[5px] text-[#C4C4C4] text-[15px] font-bakbak-one flex justify-center items-center cursor-pointer gap-[5px]`}
         >
           Upload {iUploadUp}
