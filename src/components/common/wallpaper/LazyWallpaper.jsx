@@ -7,6 +7,7 @@ import Image from "next/image";
 
 const LazyWallpaper = ({
   className,
+  style = {},
   src = "",
   alt = "",
   title = "wallpaper",
@@ -99,7 +100,8 @@ const LazyWallpaper = ({
             height={imgHeight || "100%"}
             style={
               (maxWidth && { maxWidth: maxWidth },
-              maxHeight && { maxHeight: maxHeight })
+              maxHeight && { maxHeight: maxHeight },
+              style && { ...style })
             }
             className={`${className} ${isLoading && "!absolute opacity-0"}`}
             onLoad={handleImageLoad}

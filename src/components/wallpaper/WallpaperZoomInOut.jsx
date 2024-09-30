@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useControls } from "react-zoom-pan-pinch";
 import { IZoom_In, IZoom_Out } from "../../utils/icons/icons";
 
-const WallpaperZoomInOut = ({ user = null }) => {
-  const { zoomIn, zoomOut } = useControls();
+const WallpaperZoomInOut = ({ user = null, zoomIn, zoomOut, resetZoom }) => {
   return (
     <div
       className={`w-[35px] h-fit py-[12px] absolute ${
