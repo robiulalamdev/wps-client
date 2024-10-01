@@ -152,12 +152,14 @@ const HeaderDrawer = ({ open, close }) => {
                       <Link
                         key={index}
                         target="_blank"
-                        to={user?.profile?.socials[item[0]]}
+                        href={user?.profile?.socials[item[0]]}
                         className="cursor-pointer"
                       >
                         <Image
                           src={item[1].icon.src}
                           alt="icon"
+                          width={25}
+                          height={25}
                           className="max-w-[15px] md:max-w-[25px] object-contain"
                         />
                       </Link>

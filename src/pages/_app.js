@@ -12,6 +12,7 @@ import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import DisabledUserAction from "@/components/common/global/DisabledUserAction";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout ?? ((page) => page);
