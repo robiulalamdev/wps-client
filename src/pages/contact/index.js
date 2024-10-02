@@ -85,12 +85,12 @@ const Contact = () => {
               <>
                 <img
                   className="contact_image_large w-full h-full"
-                  src={img1}
+                  src={img1.src}
                   alt=""
                 />
                 <img
                   className="contact_image_small w-full h-full"
-                  src={img2}
+                  src={img2.src}
                   alt=""
                 />
               </>
@@ -98,12 +98,12 @@ const Contact = () => {
 
             <div className="contact_social_container">
               <div className="flex items-center" style={{ gap: "10px" }}>
-                <img width="17" height="17" src={icon1} alt="" />
-                <img width="17" height="17" src={icon2} alt="" />
-                <img width="17" height="17" src={icon3} alt="" />
-                <img width="13" height="17" src={icon4} alt="" />
-                <img width="17" height="17" src={icon5} alt="" />
-                <img width="17" height="17" src={icon6} alt="" />
+                <img width="17" height="17" src={icon1.src} alt="" />
+                <img width="17" height="17" src={icon2.src} alt="" />
+                <img width="17" height="17" src={icon3.src} alt="" />
+                <img width="13" height="17" src={icon4.src} alt="" />
+                <img width="17" height="17" src={icon5.src} alt="" />
+                <img width="17" height="17" src={icon6.src} alt="" />
               </div>
               <Popover placement="bottom-end">
                 <PopoverHandler>
