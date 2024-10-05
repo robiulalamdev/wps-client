@@ -103,7 +103,7 @@ const UserProfileSettingsTab = ({ user, setUser }) => {
           <img
             src={
               viewResizeImg(image || user?.profile?.profile_image, 85, 85) ||
-              DefaultProfile
+              DefaultProfile.src
             }
             alt=""
             className="size-[75px] rounded-full object-cover"
@@ -131,7 +131,7 @@ const UserProfileSettingsTab = ({ user, setUser }) => {
               232,
               34,
               "contain"
-            ) || bannerImg
+            ) || bannerImg.src
           }
           alt=""
           className="mt-[34px] mx-auto w-[232px] h-[34px] object-contain rounded-[5px]"

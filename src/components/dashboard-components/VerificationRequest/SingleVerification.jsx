@@ -18,7 +18,8 @@ const SingleVerification = ({ item = null, setSelectedItem, selectedItem }) => {
     >
       <img
         src={
-          viewResizeImg(item?.profile?.profile_image, 40, 40) || DefaultProfile
+          viewResizeImg(item?.profile?.profile_image, 40, 40) ||
+          DefaultProfile.src
         }
         className="w-[40px] h-[40px] rounded-full object-cover"
       />

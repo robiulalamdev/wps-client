@@ -114,7 +114,7 @@ const DashSidebarUi = () => {
                 <img
                   src={
                     viewResizeImg(user?.profile?.profile_image, 37, 37) ||
-                    DefaultProfile
+                    DefaultProfile.src
                   }
                   alt=""
                   className="size-[37px] rounded-full object-cover"

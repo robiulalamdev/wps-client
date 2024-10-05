@@ -31,7 +31,7 @@ const HeaderProfile = () => {
             <img
               src={
                 viewResizeImg(user?.profile?.profile_image, 55, 55) ||
-                DefaultProfile
+                DefaultProfile.src
               }
               alt="profile"
               className="w-[50px] h-[50px] rounded-full object-cover"

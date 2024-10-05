@@ -89,7 +89,9 @@ const SearchWallpapersDrawer = ({ open, setOpen, tab2, tab3, handleQuery }) => {
                 <PopoverHandler>
                   <Button className="shadow-none hover:shadow-none normal-case min-w-[109px] max-w-[109px] h-[42px] bg-[#313131] rounded-[100px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center items-center !p-0">
                     Resolution{" "}
-                    <div className="min-w-[24px] min-h-[24px]">{iDropdown}</div>
+                    <div className="min-w-[24px] min-h-[24px] flex justify-center items-center">
+                      {iDropdown}
+                    </div>
                   </Button>
                 </PopoverHandler>
                 <PopoverContent className="bg-transparent border-none shadow-none p-0 !z-[99999999] w-full max-w-[361px] backdrop-blur-[25px]">
@@ -322,7 +324,9 @@ const SearchWallpapersDrawer = ({ open, setOpen, tab2, tab3, handleQuery }) => {
                 <PopoverHandler>
                   <Button className="shadow-none hover:shadow-none normal-case min-w-[109px] max-w-[109px] h-[42px] bg-[#313131] rounded-[100px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center items-center !p-0">
                     Screen Type{" "}
-                    <div className="min-w-[24px] min-h-[24px]">{iDropdown}</div>
+                    <div className="min-w-[24px] min-h-[24px] flex justify-center items-center">
+                      {iDropdown}
+                    </div>
                   </Button>
                 </PopoverHandler>
                 <PopoverContent className="bg-transparent border-none shadow-none p-0 !z-[99999999] w-full max-w-[361px] backdrop-blur-[25px]">
@@ -394,7 +398,9 @@ const SearchWallpapersDrawer = ({ open, setOpen, tab2, tab3, handleQuery }) => {
                 <PopoverHandler>
                   <Button className="shadow-none hover:shadow-none normal-case min-w-[109px] max-w-[109px] h-[42px] bg-[#313131] rounded-[100px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center items-center !p-0">
                     Sort By{" "}
-                    <div className="min-w-[24px] min-h-[24px]">{iDropdown}</div>
+                    <div className="min-w-[24px] min-h-[24px] flex justify-center items-center">
+                      {iDropdown}
+                    </div>
                   </Button>
                 </PopoverHandler>
                 <PopoverContent className="bg-transparent border-none shadow-none p-0 !z-[99999999] w-full max-w-[361px] backdrop-blur-[25px]">
@@ -445,7 +451,9 @@ const SearchWallpapersDrawer = ({ open, setOpen, tab2, tab3, handleQuery }) => {
                 <PopoverHandler>
                   <Button className="shadow-none hover:shadow-none normal-case min-w-[109px] max-w-[109px] h-[42px] bg-[#313131] rounded-[100px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center items-center !p-0">
                     Upload Date{" "}
-                    <div className="min-w-[24px] min-h-[24px]">{iDropdown}</div>
+                    <div className="min-w-[24px] min-h-[24px] flex justify-center items-center">
+                      {iDropdown}
+                    </div>
                   </Button>
                 </PopoverHandler>
                 <PopoverContent className="bg-transparent border-none shadow-none p-0 !z-[99999999] w-full max-w-[361px] backdrop-blur-[25px]">

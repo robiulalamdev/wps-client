@@ -129,7 +129,7 @@ const AdminChat = () => {
                         item?.user?.profile?.profile_image,
                         37,
                         37
-                      ) || DefaultProfile
+                      ) || DefaultProfile.src
                     }
                     alt=""
                     className="min-w-[37px] min-h-[37px] max-w-[37px] max-h-[37px] object-cover rounded-full"

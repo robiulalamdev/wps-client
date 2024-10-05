@@ -101,7 +101,7 @@ const UserProfileInformationTab = ({ user, setUser }) => {
               }`}
               >
                 <img
-                  src={item[1].iconDark}
+                  src={item[1].iconDark.src}
                   alt="icon"
                   className="max-w-[25px] object-contain"
                 />

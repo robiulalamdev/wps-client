@@ -159,7 +159,7 @@ const Featured = () => {
                     key={index}
                     src={
                       viewResizeImg(item?.profile_image, 80, 80) ||
-                      DefaultProfile
+                      DefaultProfile.src
                     }
                     alt=""
                     className="w-[80px] h-[80px] object-cover rounded-full"

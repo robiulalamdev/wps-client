@@ -14,7 +14,9 @@ const SingleMessage = ({ message }) => {
       {message?.senderId === user?._id ? (
         <div className="single-msg-container">
           <img
-            src={viewResizeImg(user?.profile?.profile_image, 50, 50) || profile}
+            src={
+              viewResizeImg(user?.profile?.profile_image, 50, 50) || profile.src
+            }
             alt=""
           />
           <div className="single-msg-dark">

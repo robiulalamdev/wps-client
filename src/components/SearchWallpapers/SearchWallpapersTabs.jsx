@@ -59,7 +59,7 @@ const SearchWallpapersTabs = ({ tab1, tab2, tab3, handleQuery }) => {
 
           <img
             onClick={() => setOpen(!open)}
-            src={filter}
+            src={filter.src}
             alt=""
             className="w-[57px] h-[39px] lg:hidden"
           />
@@ -391,7 +391,7 @@ const SearchWallpapersTabs = ({ tab1, tab2, tab3, handleQuery }) => {
 
             <Popover placement="bottom-start">
               <PopoverHandler>
-                <Button className="shadow-none hover:shadow-none normal-case min-w-[118px] max-w-[118px] h-[42px] bg-[#00000033] rounded-[100px] md:rounded-[23.5px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center items-center gap-x-[7px] p-0 leading-normal">
+                <Button className="shadow-none hover:shadow-none normal-case min-w-[118px] max-w-[118px] h-[42px] bg-[#00000033] rounded-[100px] md:rounded-[23.5px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center !items-center gap-x-[7px] p-0 leading-normal">
                   Screen Type <div className="w-fit h-fit">{iDropdown}</div>
                 </Button>
               </PopoverHandler>

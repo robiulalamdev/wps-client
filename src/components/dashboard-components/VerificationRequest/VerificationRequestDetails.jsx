@@ -54,7 +54,7 @@ const VerificationRequestDetails = ({
             />
           ) : (
             <img
-              src={DefaultProfile}
+              src={DefaultProfile.src}
               className="w-[60px] h-[60px] rounded-full object-cover"
             />
           )}

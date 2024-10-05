@@ -83,7 +83,7 @@ const DashboardIconSidebarUi = () => {
               <PopoverHandler>
                 <div className="flex items-center gap-x-[10px]  cursor-pointer">
                   <img
-                    src={DefaultProfile}
+                    src={DefaultProfile.src}
                     alt=""
                     className="size-[37px] rounded-full object-cover"
                   />
@@ -92,7 +92,7 @@ const DashboardIconSidebarUi = () => {
               <PopoverContent className="border-gray-900 shadow flex justify-between items-center bg-dash-cm-bg w-[250px] h-[70px]">
                 <div className="flex items-center gap-x-[10px]">
                   <img
-                    src={DefaultProfile}
+                    src={DefaultProfile.src}
                     alt=""
                     className="size-[37px] rounded-full object-cover"
                   />

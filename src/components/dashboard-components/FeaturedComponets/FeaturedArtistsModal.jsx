@@ -200,7 +200,7 @@ const FeaturedArtistsModal = ({
                   )}
                   {!item?.profile_image && item?.slug && (
                     <img
-                      src={DefaultProfile}
+                      src={DefaultProfile.src}
                       alt=""
                       className="w-[80px] h-[80px] object-cover rounded-full"
                     />

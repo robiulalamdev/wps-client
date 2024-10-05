@@ -36,7 +36,8 @@ const ProfileBanner = ({ user }) => {
           <div className="rounded-full size-[59px] md:size-[143px] flex justify-center items-center bg-[#00000033] absolute -left-[10px] md:-left-[30px] -bottom-[40px] md:-bottom-[100px]">
             <img
               src={
-                viewResizeImg(user?.profile?.profile_image, 125, 125) || profile
+                viewResizeImg(user?.profile?.profile_image, 125, 125) ||
+                profile.src
               }
               alt="profile"
               className="size-[49px] md:size-[125px] rounded-full object-cover"

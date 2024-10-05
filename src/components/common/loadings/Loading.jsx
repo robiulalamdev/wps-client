@@ -7,7 +7,7 @@ const Loading = ({ className = "", containerClassName = "" }) => {
       className={`w-full flex justify-center items-center h-full ${containerClassName}`}
     >
       <img
-        src={spinner}
+        src={spinner.src}
         alt=""
         className={`max-w-[288px] max-h-[288px] w-full object-contain ${className}`}
       />

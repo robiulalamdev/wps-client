@@ -28,7 +28,7 @@ const SearchOfficialBrandPopover = ({
                 className={`w-full h-[50px] md:h-[60px] rounded-[3px] md:rounded-[5px] overflow-hidden`}
               >
                 <img
-                  src={item.img}
+                  src={item.img.src}
                   alt={item.name}
                   className="w-full h-full rounded-[3px] md:rounded-[5px] object-cover hover:scale-110 duration-300 cursor-pointer"
                 />

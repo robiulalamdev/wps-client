@@ -28,7 +28,7 @@ const OfficialBrandProfileSocial = ({ author }) => {
                   className="cursor-pointer"
                 >
                   <img
-                    src={item[1].icon}
+                    src={item[1].icon.src}
                     alt="icon"
                     className="max-w-[15px] md:max-w-[25px] object-contain"
                   />
