@@ -214,7 +214,7 @@ const Login = () => {
               Sign In
             </Button>
 
-            <Link href="/forgot-password">
+            <Link href="/auth/forgot-password">
               <p className="!mt-[17px] md:mt-[12px] text-center text-[#373737] text-[10px] font-bakbak-one">
                 Can’t login
               </p>
