@@ -89,6 +89,13 @@ const NewPassword = () => {
   }, [token]);
 
   const handleChangePassword = async (data) => {
+    if (data?.password !== data?.repeat_password) {
+      setError("repeat_password", {
+        type: "manual",
+        message: "Passwords do not match",
+      });
+      return;
+    }
     const options = {
       data: { email: email, password: data?.password },
     };
@@ -193,9 +200,19 @@ const NewPassword = () => {
                     {...register("password", {
                       required: "Password is required",
                       pattern: {
-                        value: /^(?!\s)(?!.*\s{2})(?=.*[a-zA-Z0-9]).{6,8}$/, // Requires 6 to 8 characters with no spaces
+                        value: /^(?!\s)(?!.*\s{2})(?=.*[a-zA-Z0-9]).{6,12}$/, // Requires 6 to 12 characters with no spaces
                         message:
-                          "Password must be 6 to 8 characters long with no spaces",
+                          "Password must be 6 to 12 characters long with no spaces",
+                      },
+                      validate: {
+                        complexPassword: (value) => {
+                          const regex =
+                            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,12}$/;
+                          return (
+                            regex.test(value) ||
+                            "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character"
+                          );
+                        },
                       },
                     })}
                     type="password"
@@ -211,8 +228,21 @@ const NewPassword = () => {
                   <input
                     {...register("repeat_password", {
                       required: "Please confirm your password",
-                      validate: (value) =>
-                        value === watch("password") || "Passwords do not match",
+                      pattern: {
+                        value: /^(?!\s)(?!.*\s{2})(?=.*[a-zA-Z0-9]).{6,12}$/, // Requires 6 to 12 characters with no spaces
+                        message:
+                          "Password must be 6 to 12 characters long with no spaces",
+                      },
+                      validate: {
+                        complexPassword: (value) => {
+                          const regex =
+                            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,12}$/;
+                          return (
+                            regex.test(value) ||
+                            "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character"
+                          );
+                        },
+                      },
                     })}
                     type="password"
                     placeholder="*****************"
