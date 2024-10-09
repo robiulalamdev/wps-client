@@ -4,6 +4,25 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#121212" />
+        <link rel="apple-touch-icon" href="/icons/wps-512x512.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="192x192"
+          href="/icons/wps-192x192.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="384x384"
+          href="/icons/wps-384x384.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="512x512"
+          href="/icons/wps-512x512.png"
+        />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
