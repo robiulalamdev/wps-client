@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import { NODE_ENV } from "../../../lib/config";
 
 const DisabledUserAction = () => {
   useEffect(() => {
-    if (NODE_ENV === "production") {
+    if (process.env.NODE_ENV === "production") {
       const disableDevTools = (event) => {
         if (
           event.key === "F12" ||

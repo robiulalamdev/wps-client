@@ -1,6 +1,6 @@
 import nookies from "nookies";
 
-export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV;
+export const NODE_ENV = process.env.NODE_ENV;
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL;
 export const TOKEN_NAME = "wps";
@@ -29,7 +29,7 @@ export const SET_TOKEN = async (etx = null, token) => {
     maxAge: 30 * 24 * 60 * 60, // 30 days
     path: "/", // Available throughout the app
     httpOnly: false, // Ensure it's not accessible via client-side JS
-    secure: NODE_ENV === "production",
+    secure: process.env.NODE_ENV === "production",
   });
 };
 
