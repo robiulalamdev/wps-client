@@ -268,7 +268,7 @@ const Wallpaper = ({ wallpaperData }) => {
                     <div
                       onClick={() =>
                         window.open(
-                          `https://discord.com/oauth2/authorize?client_id=1247258059596632134&permissions=0&scope=bot&redirect_uri=${encodeURIComponent(
+                          `https://discord.com/channels/@me?message=${encodeURIComponent(
                             url
                           )}`,
                           "_blank"
@@ -279,14 +279,13 @@ const Wallpaper = ({ wallpaperData }) => {
                       {iShare4}
                     </div>
                     <h1
-                      onClick={() =>
+                      onClick={() => () =>
                         window.open(
-                          `https://discord.com/oauth2/authorize?client_id=1247258059596632134&permissions=0&scope=bot&redirect_uri=${encodeURIComponent(
+                          `https://discord.com/channels/@me?message=${encodeURIComponent(
                             url
                           )}`,
                           "_blank"
-                        )
-                      }
+                        )}
                       className="text-[#FFF] font-lato text-[10px]"
                     >
                       Discord

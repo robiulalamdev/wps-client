@@ -4,6 +4,15 @@ export const NODE_ENV = process.env.NODE_ENV;
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL;
 export const TOKEN_NAME = "wps";
+
+export const SOCIAL_LINKS = {
+  TIKTOK: "https://www.tiktok.com/@thewallpapersociety",
+  TWITTER: "https://x.com/wallpsociety",
+  DISCORD: "https://discord.gg/BkTyxthkr6",
+  INSTAGRAM: "https://www.instagram.com/wallpsociety",
+  REDDIT: "https://www.reddit.com/r/WallpaperSociety",
+};
+
 export const ACCEPT_FILES = {
   PROOF_OF_IDENTITY: ".png, .jpg, .jpeg, .doc, .pdf",
 };

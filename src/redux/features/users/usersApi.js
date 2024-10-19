@@ -150,6 +150,10 @@ const usersApi = api.injectEndpoints({
       query: (query) => `/users/official-brands${query}`,
       providesTags: ["users"],
     }),
+    getAllOfficialBrands: builder.query({
+      query: (query) => `/users/official-brands/all${query}`,
+      providesTags: ["users"],
+    }),
 
     //* Dashboard apis
 
@@ -254,6 +258,7 @@ export const {
   useGetProfileActivityByIdQuery,
   useGetVerifiedArtistsQuery,
   useGetOfficialBrandsQuery,
+  useGetAllOfficialBrandsQuery,
   // reset password step by stem
   usePasswordResetMutation,
   useVerifyResetPasswordMutation,

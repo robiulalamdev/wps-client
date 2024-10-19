@@ -54,8 +54,8 @@ const OfficialBrandBanner = ({ user }) => {
                   </h1>
                 )}
 
-                {!user?.profile?.bio && (
-                  <p className="text-[#FFF] font-lato text-[15px] leading-normal font-semibold leading-[22.575px] break-words hidden md:block max-w-[300px]">
+                {user?.profile?.bio && (
+                  <p className="text-[#FFF] font-lato text-[15px] font-semibold leading-[22.575px] break-words hidden md:block max-w-[300px]">
                     {highlightUrl(
                       user?.profile?.bio,
                       "text-[#FDF516] cursor-pointer"
@@ -64,8 +64,8 @@ const OfficialBrandBanner = ({ user }) => {
                 )}
               </div>
             </div>
-            {!user?.profile?.bio && (
-              <p className="text-[#FFF] font-lato text-[12px] leading-normal md:text-[15px] font-semibold leading-[22.575px] break-words md:hidden">
+            {user?.profile?.bio && (
+              <p className="text-[#FFF] font-lato text-[12px] md:text-[15px] font-semibold leading-[22.575px] break-words md:hidden">
                 {highlightUrl(
                   user?.profile?.bio,
                   "text-[#FDF516] cursor-pointer"

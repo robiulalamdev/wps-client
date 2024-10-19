@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import RulesHeader from "../../components/shared/headers/RulesHeader";
 import bg from "../../assets/images/social/bg.png";
 
@@ -7,6 +8,16 @@ import img3 from "../../assets/images/social/s3.png";
 import img4 from "../../assets/images/social/s4.png";
 import img5 from "../../assets/images/social/s5.png";
 import MainLayout from "@/layouts/MainLayout";
+import { SOCIAL_LINKS } from "@/lib/config";
+import Link from "next/link";
+
+const items = [
+  { id: 1, name: "discord", image: img1, link: SOCIAL_LINKS.DISCORD },
+  { id: 2, name: "reddit", image: img2, link: SOCIAL_LINKS.REDDIT },
+  { id: 3, name: "instagram", image: img3, link: SOCIAL_LINKS.INSTAGRAM },
+  { id: 4, name: "tiktok", image: img4, link: SOCIAL_LINKS.TIKTOK },
+  { id: 5, name: "twitter", image: img5, link: SOCIAL_LINKS.TWITTER },
+];
 
 const Socials = () => {
   return (
@@ -35,7 +46,21 @@ const Socials = () => {
         ></div>
 
         <div className="mt-[30px] md:mt-[36px] grid grid-cols-3 gap-x-[7px] gap-y-[28px] md:gap-x-[25px] md:gap-y-[36px]">
-          <div className="h-[72px] w-full md:h-[210px] rounded-[10px] md:rounded-[5px] overflow-hidden">
+          {items.map((item, index) => (
+            <Link
+              key={index}
+              href={item.link}
+              target="_blank"
+              className="h-[72px] w-full md:h-[210px] rounded-[10px] md:rounded-[5px] overflow-hidden outline-none focus:outline-none"
+            >
+              <img
+                src={item?.image.src}
+                alt="social image"
+                className="w-full h-full hover:scale-110 duration-300 cursor-pointer object-cover rounded-[10px] md:rounded-[5px]"
+              />
+            </Link>
+          ))}
+          {/* <div className="h-[72px] w-full md:h-[210px] rounded-[10px] md:rounded-[5px] overflow-hidden">
             <img
               src={img1.src}
               alt="social image"
@@ -69,7 +94,7 @@ const Socials = () => {
               alt="social image"
               className="w-full h-full hover:scale-110 duration-300 cursor-pointer object-cover rounded-[10px] md:rounded-[5px]"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

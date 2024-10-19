@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className="w-full h-fit mt-[145px]">
-      <div className="flex flex-col md:flex-row items-start gap-y-[13px] md:gap-x-[189px] font-bakbak-one">
+      <div className="flex flex-col md:flex-row items-start gap-y-[13px] md:gap-x-[120px] lg:gap-x-[189px] xl:gap-x-[240px] font-bakbak-one">
         <h1 className="text-white text-[30px] md:text-[40px] font-bakbak-one">
           THE WALLPAPER SOCIETY
         </h1>
@@ -59,11 +59,11 @@ const Footer = () => {
                 Socials
               </p>
             </Link>
-            <Link href="/contact">
+            {/* <Link href="/contact">
               <p className="text-[#939393] font-bakbak-one text-[15px] mt-[7px] md:mt-[4px]">
                 Sponsors / Advertisers
               </p>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

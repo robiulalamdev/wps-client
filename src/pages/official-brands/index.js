@@ -1,7 +1,10 @@
 import { Button } from "@material-tailwind/react";
 import TitleHeader from "../../components/shared/headers/TitleHeader";
 import OfficialBrandSearch from "../../components/officialBrands/OfficialBrandSearch";
-import { useGetOfficialBrandsQuery } from "../../redux/features/users/usersApi";
+import {
+  useGetAllOfficialBrandsQuery,
+  useGetOfficialBrandsQuery,
+} from "../../redux/features/users/usersApi";
 import LazyWallpaper from "../../components/common/wallpaper/LazyWallpaper";
 import { useMemo, useState } from "react";
 import { makeQuery } from "../../lib/services/service";
@@ -16,12 +19,17 @@ const OfficialBrands = () => {
   const [brands, setBrands] = useState([]);
   const [meta, setMeta] = useState({ page: 1, limit: 50, total: 0 });
   const search = router.query?.search;
+
   const { data: official_brands } = useGetPublicBrandFeaturedQuery();
-  const { data, isLoading } = useGetOfficialBrandsQuery(
+
+  const { data, isLoading } = useGetAllOfficialBrandsQuery(
     `?page=${meta?.page}&limit=${meta?.limit}${
       search ? `&search=${search}` : ""
     }`
   );
+
+  console.log(data);
+
   const characters = Array.from({ length: 26 }, (_, index) =>
     String.fromCharCode("A".charCodeAt(0) + index)
   );

@@ -66,27 +66,25 @@ const ShareIcons = ({ author }) => {
         </div>
         <div className="flex flex-col items-center gap-[8px]">
           <div
-            onClick={() =>
+            onClick={() => () =>
               window.open(
-                `https://discord.com/api/oauth2/authorize?client_id=<YOUR_CLIENT_ID>&scope=bot&permissions=0&redirect_uri=${encodeURIComponent(
+                `https://discord.com/channels/@me?message=${encodeURIComponent(
                   url
                 )}`,
                 "_blank"
-              )
-            }
+              )}
             className="w-[30px] h-[30px] bg-[#00000066] rounded flex justify-center items-center"
           >
             {iShare4}
           </div>
           <h1
-            onClick={() =>
+            onClick={() => () =>
               window.open(
-                `https://discord.com/api/oauth2/authorize?client_id=<YOUR_CLIENT_ID>&scope=bot&permissions=0&redirect_uri=${encodeURIComponent(
+                `https://discord.com/channels/@me?message=${encodeURIComponent(
                   url
                 )}`,
                 "_blank"
-              )
-            }
+              )}
             className="text-[#FFF] font-lato text-[10px]"
           >
             Discord

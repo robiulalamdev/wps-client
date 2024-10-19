@@ -53,6 +53,7 @@ const ZoomWallpaper = ({ data = null, user }) => {
           maxHeight={820}
           width={1462.5}
           height={2070}
+          resizeMode="contain"
           className="2xl:ml-[310px] mx-auto w-full max-w-[448px] h-full min-h-[755px] lg:min-h-[802px] lg:max-h-[802px] object-cover rounded-[10px] transition-transform duration-300"
         />
       )}
