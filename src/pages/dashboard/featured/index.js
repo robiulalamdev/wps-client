@@ -196,7 +196,7 @@ const Featured = () => {
                   className="max-w-[276px] w-full h-[40px] rounded-[10px] bg-[#1515154D] flex justify-center items-center gap-x-[8px]"
                 >
                   <h1 className="text-white font-lato font-medium text-[15px] leading-normal">
-                    Featured Brand Search
+                    Featured Brands
                   </h1>
                   {iDashEdit}
                 </div>
@@ -257,7 +257,7 @@ const Featured = () => {
       />
       <FeaturedBrandSearchModal
         open={openFBrandSearchModal}
-        name="Featured Search"
+        name="Featured Brands"
         onClose={setOpenFBrandSearchModal}
         items={featuredBrands?.data?.slice(0, 10) || []}
         handleAdd={handleAddFeatured}

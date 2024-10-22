@@ -28,7 +28,7 @@ const OfficialBrands = () => {
     }`
   );
 
-  console.log(data);
+  // console.log(data);
 
   const characters = Array.from({ length: 26 }, (_, index) =>
     String.fromCharCode("A".charCodeAt(0) + index)
@@ -77,14 +77,18 @@ const OfficialBrands = () => {
             >
               Featured
             </Button>
-            <div className="lg:flex justify-center items-center gap-x-[34px] flex-grow w-fit rounded-[23.5px] bg-[#00000033] h-[42px] px-[40px] hidden lg:inline-block">
+            <div className="lg:flex justify-center items-center gap-x-[16px] flex-grow w-fit rounded-[23.5px] bg-[#00000033] h-[42px] px-[28px] hidden lg:inline-block">
               {characters.map((chrt, index) => (
                 <div
                   key={index}
                   onClick={() => handleQuery("search", chrt)}
-                  className="cursor-pointer"
+                  className={`w-[25px] h-[25px] rounded-[5px] flex justify-center items-center cursor-pointer ${
+                    chrt.toLocaleLowerCase() === search?.toLocaleLowerCase()
+                      ? "bg-[#838383] text-[#262626]"
+                      : "text-white hover:bg-[#83838344]"
+                  }`}
                 >
-                  <h1 className="cursor-pointer text-white text-[15px] font-lato font-semibold">
+                  <h1 className="cursor-pointer text-current text-[15px] font-lato font-normal">
                     {chrt}
                   </h1>
                 </div>

@@ -4,6 +4,7 @@ import {
   Popover,
   PopoverContent,
   PopoverHandler,
+  Tooltip,
 } from "@material-tailwind/react";
 import {
   iDashHrThreeDots,
@@ -17,6 +18,11 @@ import UserAccountDeletionModal from "./UserAccountDeletionModal";
 import useViewImage from "../../../lib/hooks/useViewImage";
 import moment from "moment";
 import { SocketContext } from "../../../contextApi/SocketContext";
+import detailsButton from "../../../assets/icons/global/details.png";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { I_CopyButton, I_CopyTick } from "@/utils/icons/icons";
+import { toast } from "react-toastify";
 
 const UsersTableRow = ({
   data,
@@ -33,6 +39,29 @@ const UsersTableRow = ({
   const { socketUsers } = useContext(SocketContext);
 
   const isActive = socketUsers.has(data?._id);
+
+  const [copied, setCopied] = useState(false);
+
+  const router = useRouter();
+
+  const handleGotoProfile = async (userInfo) => {
+    if (userInfo?.slug) {
+      router.push(`/profiles/${userInfo?.slug}`);
+    }
+    setOpen(false);
+  };
+
+  const copyTextToClipboard = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  };
 
   return (
     <>
@@ -75,7 +104,7 @@ const UsersTableRow = ({
           0 Reports
         </div>
         <div className="text-[#8F8F8F] font-lato text-[15px] text-nowrap min-w-[120px] max-w-[120px] ml-[55px]">
-          <div className="flex items-center gap-[5px]">
+          <div className="flex items-center gap-[5px] group transition-all duration-150 ease-in">
             {data?.profile?.flag && (
               <img
                 src={viewResizeImg(data?.profile?.flag?.toLowerCase(), 16, 12)}
@@ -83,8 +112,38 @@ const UsersTableRow = ({
                 className="w-[16px] h-[12px]"
               />
             )}
+            {data?.profile?.country && (
+              <h1 className="group-hover:hidden transition-all duration-150 ease-in">
+                <span className="oneLine text-[15px] text-[#8F8F8F] font-lato font-medium leading-normal">
+                  {data?.profile?.country}
+                </span>
+              </h1>
+            )}
             {data?.profile?.ip && (
-              <h1 className="oneLine">{data?.profile?.ip}</h1>
+              <div className="hidden group-hover:inline-block w-fit group-hover:flex items-center gap-x-[8px] overflow-hidden transition-all duration-150 ease-in">
+                <h1 className="oneLine text-[15px] text-[#8F8F8F] font-lato font-medium leading-normal">
+                  {data?.profile?.ip}
+                </h1>
+                {copied ? (
+                  <Tooltip content="Copied">
+                    <button
+                      onClick={() => copyTextToClipboard(data?.profile?.ip)}
+                      className="text-green-500 w-[14px] h-[14px] flex justify-center items-center"
+                    >
+                      {I_CopyTick}
+                    </button>
+                  </Tooltip>
+                ) : (
+                  <Tooltip content="Copy">
+                    <button
+                      onClick={() => copyTextToClipboard(data?.profile?.ip)}
+                      className="w-[14px] h-[14px] flex justify-center items-center"
+                    >
+                      {I_CopyButton}
+                    </button>
+                  </Tooltip>
+                )}
+              </div>
             )}
           </div>
         </div>
@@ -109,24 +168,36 @@ const UsersTableRow = ({
                   onClick={() => setOpen(true)}
                   className="cursor-pointer"
                 >
-                  {iDashHrThreeDots}
+                  <Image
+                    src={detailsButton}
+                    alt=""
+                    width={35}
+                    height={35}
+                    className=""
+                  />
                 </PopoverHandler>
-                <PopoverContent className="w-[176px] h-[120px] rounded-[5px] bg-[#D9D9D9] border-none shadow-none pt-[10px] px-[12px] pb-[10px] flex flex-col justify-between items-start">
+                <PopoverContent className="z-50 w-[176px] h-[140px] rounded-[5px] bg-[#D9D9D9] border-none shadow-none pt-[10px] px-[12px] pb-[10px] flex flex-col justify-between items-start">
                   <h1
                     onClick={() => {
                       setOpenInfoModal(data);
                       setOpen(false);
                     }}
-                    className="text-[15px] font-lato font-medium text-[#373737] text-nowrap leading-normal cursor-pointer"
+                    className="text-[15px] font-lato font-medium text-[#373737] hover:font-semibold transition-all duration-150 ease-in text-nowrap leading-normal cursor-pointer"
                   >
                     Detailed Information
+                  </h1>
+                  <h1
+                    onClick={() => handleGotoProfile(data)}
+                    className="text-[15px] font-lato font-medium text-[#373737] hover:font-semibold transition-all duration-150 ease-in text-nowrap leading-normal cursor-pointer"
+                  >
+                    Go to Profile
                   </h1>
                   <h1
                     onClick={() => {
                       setOpenPassModal(data);
                       setOpen(false);
                     }}
-                    className="text-[15px] font-lato font-medium text-[#373737] text-nowrap leading-normal cursor-pointer"
+                    className="text-[15px] font-lato font-medium text-[#373737] hover:font-semibold transition-all duration-150 ease-in text-nowrap leading-normal cursor-pointer"
                   >
                     Change Password
                   </h1>
@@ -135,7 +206,7 @@ const UsersTableRow = ({
                       setOpenDeleteModal(data);
                       setOpen(false);
                     }}
-                    className="text-[15px] font-lato font-medium text-[#373737] text-nowrap leading-normal cursor-pointer"
+                    className="text-[15px] font-lato font-medium text-[#373737] hover:font-semibold transition-all duration-150 ease-in text-nowrap leading-normal cursor-pointer"
                   >
                     Delete User
                   </h1>

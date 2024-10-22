@@ -1,7 +1,7 @@
 import BannerTab from "./BannerTab";
 import { Button } from "@material-tailwind/react";
 import { useGetSearchWallpapersQuery } from "../../../redux/features/wallpapers/wallpapersApi";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PageLoading from "../../common/loadings/PageLoading";
 import NoData from "../../common/notFound/NoData";
 import BannerWallpapers from "./BannerWallpapers";
@@ -10,11 +10,12 @@ import { useRouter } from "next/router";
 const Banner = () => {
   const [tab1, setTab1] = useState("Trending");
   const [tab2, setTab2] = useState("All");
+  const [tab3, setTab3] = useState("Desktop");
   const [limit, setLimit] = useState(12);
 
   const queries = `${tab1 ? `tn=${tab1}&` : ""}${tab2 ? `type=${tab2}&` : ""}${
     limit ? `limit=${limit}&` : ""
-  }`;
+  }${tab3 ? `screen_type=${tab3}&` : ""}`;
 
   const { data, isLoading } = useGetSearchWallpapersQuery(
     `?${queries?.slice(0, -1)}`
@@ -28,9 +29,34 @@ const Banner = () => {
     }
   }, [data?.data]);
 
+  const detectDevice = () => {
+    const isPhone = window.innerWidth <= 768;
+    if (isPhone) {
+      setTab3("Phones");
+    } else {
+      setTab3("Desktop");
+    }
+  };
+
+  useEffect(() => {
+    detectDevice();
+    window.addEventListener("resize", detectDevice);
+
+    return () => {
+      window.removeEventListener("resize", detectDevice);
+    };
+  }, []);
+
   return (
-    <div className="bg-[#00000033] rounded-[10px] md:rounded-[40px] px-[12px] md:px-[35px]">
-      <BannerTab tab1={tab1} setTab1={setTab1} tab2={tab2} setTab2={setTab2} />
+    <div className="!bg-[#00000033] rounded-[10px] md:rounded-[40px] px-[12px] md:px-[35px]">
+      <BannerTab
+        tab1={tab1}
+        setTab1={setTab1}
+        tab2={tab2}
+        setTab2={setTab2}
+        tab3={tab3}
+        setTab3={setTab3}
+      />
 
       {isLoading && <PageLoading />}
       {!isLoading && wallpapers?.length > 0 && (

@@ -15,10 +15,10 @@ const HeaderAU = () => {
   const router = useRouter();
   return (
     <>
-      <div className="min-w-[183px] max-w-[183px] h-[45px] grid grid-cols-2 bg-[#00000033] rounded-[10px] py-1">
+      <div className="min-w-[183px] max-w-[183px] h-[45px] flex justify-between items-center bg-[#00000033] rounded-[10px] py-1">
         <Popover placement="bottom-start">
           <PopoverHandler>
-            <Button className="shadow-none hover:shadow-none w-full h-full text-white bg-transparent normal-case font-normal text-[15px] font-bakbak-one p-0 m-0 flex justify-center items-center border-r border-[#373737] rounded-none">
+            <Button className="flex-grow shadow-none hover:shadow-none w-full h-full text-white bg-transparent normal-case font-normal text-[15px] font-bakbak-one p-0 m-0 flex justify-center items-center rounded-none">
               Account
             </Button>
           </PopoverHandler>
@@ -111,10 +111,11 @@ const HeaderAU = () => {
             )}
           </PopoverContent>
         </Popover>
+        <div className="w-[2px] h-[28px] bg-[#292929]"></div>
 
         <Button
           onClick={() => router.push("/upload")}
-          className="shadow-none hover:shadow-none w-full h-full text-white bg-transparent normal-case font-normal text-[15px] font-bakbak-one p-0 m-0 flex justify-center items-center rounded-none"
+          className="flex-grow shadow-none hover:shadow-none w-full h-full text-white bg-transparent normal-case font-normal text-[15px] font-bakbak-one p-0 m-0 flex justify-center items-center rounded-none"
         >
           Upload
         </Button>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   IconButton,
   SpeedDial,
@@ -5,7 +6,13 @@ import {
   SpeedDialHandler,
 } from "@material-tailwind/react";
 
-import { iHLove, iLock, iLogout, iUser } from "../../../utils/icons/icons";
+import {
+  iHLove,
+  iLock,
+  iLogout,
+  iSetting,
+  iUser,
+} from "../../../utils/icons/icons";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../contextApi/AuthContext";
 import useViewImage from "../../../lib/hooks/useViewImage";
@@ -41,7 +48,7 @@ const HeaderProfile = () => {
         {open && (
           <SpeedDialContent
             onMouseEnter={() => setOpen(true)}
-            className={`w-[255px] h-[62px] backdrop-blur-lg rounded-[100px] rounded-r-none ml-[5px] flex flex-row justify-start items-center gap-x-[16px] pl-[25px] ${
+            className={`w-[275px] h-[62px] backdrop-blur-lg rounded-[100px] rounded-r-none ml-[5px] flex flex-row justify-start items-center gap-x-[10px] pl-[25px] ${
               open ? "bg-[#00000050]" : "bg-[#00000033]"
             }`}
           >
@@ -50,6 +57,12 @@ const HeaderProfile = () => {
               className="p-0 rounded-full bg-transparent hover:bg-black"
             >
               {iLogout}
+            </IconButton>
+            <IconButton
+              onClick={() => router.push("/account-settings")}
+              className="p-0 rounded-full bg-transparent hover:bg-black"
+            >
+              {iSetting}
             </IconButton>
             <IconButton
               onClick={() => router.push("/vault")}

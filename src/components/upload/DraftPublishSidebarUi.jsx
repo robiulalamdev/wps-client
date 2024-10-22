@@ -218,13 +218,13 @@ const DraftPublishSidebarUi = ({
               Classification
             </h1>
 
-            <div className="bg-[#00000033] rounded-[8px] w-[240px] h-[36px] flex justify-between items-center px-[8px] mt-[21px]">
+            <div className="bg-[#00000033] rounded-[8px] w-[161px] h-[36px] flex justify-between items-center px-[8px] mx-auto mt-[21px]">
               {/* {["SFW", "Risky", "NSFW"].map((t, i) => ( */}
               {["SFW", "NSFW"].map((t, i) => (
                 <Button
                   onClick={() => setClassification(t)}
                   key={i}
-                  className={`hover:shadow-none shadow-none p-0 m-0 normal-case font-lato text-[12px] leading-[14.4px] font-bold min-w-[79px] h-[29px] px-2 ${
+                  className={`hover:shadow-none shadow-none p-0 m-0 normal-case font-lato text-[12px] leading-[14.4px] font-bold min-w-[59px] h-[29px] px-2 ${
                     classification === t
                       ? `bg-[#0AB745] !text-[#fff] rounded-[8px]`
                       : "bg-transparent !text-[#C6C6C6]"
