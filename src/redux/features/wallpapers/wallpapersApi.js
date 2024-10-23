@@ -159,14 +159,6 @@ const usersApi = api.injectEndpoints({
       invalidatesTags: ["wallpapers"],
     }),
 
-    addFeaturedItems: builder.mutation({
-      query: ({ data }) => ({
-        url: `/wallpapers/add-featured`,
-        method: "POST",
-        body: data,
-      }),
-      invalidatesTags: ["wallpapers"],
-    }),
     getInfoBySlug: builder.mutation({
       query: ({ data, slug }) => ({
         url: `/wallpapers/media-info/${slug}`,
@@ -247,7 +239,6 @@ export const {
   useUpdateMediaWallpapersMutation,
   useDeleteMediaWallpapersByIdsMutation,
   useUpdateMediaWallTagByIdMutation,
-  useAddFeaturedItemsMutation,
   useGetInfoBySlugMutation,
   useGetMostDownloadedQuery,
   useGetTopCategoriesQuery,

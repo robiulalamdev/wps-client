@@ -88,7 +88,7 @@ const Sponsors = () => {
                 className="max-w-[276px] w-full h-[40px] rounded-[10px] bg-[#1515154D] flex justify-center items-center gap-x-[8px]"
               >
                 <h1 className="text-white font-lato font-medium text-[15px] leading-normal">
-                  Search Sponsors
+                  Official Wallpapers
                 </h1>
                 {iDashEdit}
               </div>
@@ -104,7 +104,7 @@ const Sponsors = () => {
                 className="max-w-[276px] w-full h-[40px] rounded-[10px] bg-[#1515154D] flex justify-center items-center gap-x-[8px]"
               >
                 <h1 className="text-white font-lato font-medium text-[15px] leading-normal">
-                  New & Trending
+                  Featured Trending & New
                 </h1>
                 {iDashEdit}
               </div>

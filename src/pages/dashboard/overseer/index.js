@@ -283,7 +283,7 @@ const Overseer = () => {
                       selectedTotal > 0 ? "text-white" : "text-[#585858]"
                     } bg-[#232323] font-lato text-[15px] font-medium normal-case`}
                   >
-                    {verify ? verify : "Unverified"}
+                    {verify ? verify : "Verify"}
                   </Button>
                 </PopoverHandler>
                 <PopoverContent className="w-[112px] h-fit rounded-[5px] py-[20px] flex flex-col gap-4 items-center bg-[#232323] outline-none border-none shadow-none">
