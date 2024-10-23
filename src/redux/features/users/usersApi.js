@@ -222,6 +222,14 @@ const usersApi = api.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+    updateUserAndProfileInfo: builder.mutation({
+      query: ({ data, id }) => ({
+        url: `/users/information/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["users"],
+    }),
     modifyPrivilegesInfo: builder.mutation({
       query: ({ data, id }) => ({
         url: `/users/modify/privileges-update/${id}`,
@@ -286,6 +294,7 @@ export const {
   useModifyUserLoginInfoMutation,
   useModifyProfileSettingsInfoMutation,
   useModifyProfileInformationMutation,
+  useUpdateUserAndProfileInfoMutation,
   useModifyPrivilegesInfoMutation,
 
   // -------------------

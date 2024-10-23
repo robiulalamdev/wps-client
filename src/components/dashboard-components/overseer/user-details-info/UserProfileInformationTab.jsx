@@ -1,18 +1,25 @@
 /* eslint-disable react/prop-types */
 import { useMemo, useState } from "react";
 import { socialLinkItems } from "../../../../lib/data/globalData";
-import { Button } from "@material-tailwind/react";
+import {
+  Button,
+  Popover,
+  PopoverContent,
+  PopoverHandler,
+} from "@material-tailwind/react";
 import { toast } from "react-toastify";
-import { useModifyProfileInformationMutation } from "../../../../redux/features/users/usersApi";
+import { useUpdateUserAndProfileInfoMutation } from "../../../../redux/features/users/usersApi";
 import { SpinnerCircularFixed } from "spinners-react";
+import { iDashDownArrowYellow } from "@/utils/icons/dashboard-icons/dashicons";
 
 const UserProfileInformationTab = ({ user, setUser }) => {
   const [selectedSocial, setSelectedSocial] = useState(null);
   const [linkValue, setLinkValue] = useState("");
   const [bio, setBio] = useState("");
+  const [status, setStatus] = useState("");
 
-  const [modifyProfileInformation, { isLoading }] =
-    useModifyProfileInformationMutation();
+  const [updateUserAndProfileInfo, { isLoading }] =
+    useUpdateUserAndProfileInfoMutation();
 
   const handleUpdate = async () => {
     const socials = {
@@ -29,12 +36,28 @@ const UserProfileInformationTab = ({ user, setUser }) => {
       socials[selectedSocial?.name] = linkValue;
     }
 
+    const userData = {};
+    if (status) {
+      if (status === "Unverified") {
+        userData["verified"] = false;
+      } else if (status === "Verified") {
+        userData["verified"] = true;
+      }
+    }
+
     const options = {
       id: user?._id,
-      data: { socials: socials, bio: bio ? bio : user?.profile?.bio },
+      data: {
+        user: userData,
+        profile: {
+          socials: socials,
+          bio: bio ? bio : user?.profile?.bio,
+        },
+      },
     };
 
-    const result = await modifyProfileInformation(options);
+    const result = await updateUserAndProfileInfo(options);
+    setStatus("");
     if (result?.data?.success) {
       if (result?.data?.data) {
         setUser(result?.data?.data);
@@ -65,13 +88,14 @@ const UserProfileInformationTab = ({ user, setUser }) => {
       }
     }
   };
+
   return (
     <>
       <h1 className="font-lato font-bold text-[20px] text-[#313131] pl-[14px] pt-[29px]">
         Profile Information
       </h1>
 
-      <div className="mt-[51px] pl-[12px]">
+      <div className="mt-[41px] pl-[12px]">
         <div>
           <h1 className="font-lato text-[20px] font-bold text-[#313131]">
             Bio
@@ -117,15 +141,40 @@ const UserProfileInformationTab = ({ user, setUser }) => {
             />
           </div>
         </div>
-        <div className="mt-[52px]">
+        <div className="mt-[32px]">
           <h1 className="font-lato text-[20px] font-bold text-[#313131]">
             Account Verification
           </h1>
+          <h1 className="!font-lato text-[15px] text-[#313131] font-normal leading-normal mt-[8px]">
+            Status: {user?.verified ? "Verified" : "Unverified"}
+          </h1>
+
+          <Popover placement="bottom-start">
+            <PopoverHandler>
+              <button className="flex justify-between items-center w-[271px] h-[26px] rounded-[5px] bg-[#949494] pl-[13px] pr-[11px] mt-[10px]">
+                <h1 className="font-lato font-medium leading-normal text-[12px] text-[#000000] oneLine">
+                  {status ? status : "Select:"}
+                </h1>
+                {iDashDownArrowYellow}
+              </button>
+            </PopoverHandler>
+            <PopoverContent className="min-w-[271px] max-w-[271px] min-h-[62px] max-h-[62px] bg-[#313131] rounded-[5px] outline-none border-none z-[99999999] grid grid-cols-1 gap-y-[8px] overflow-y-auto px-[13px] py-[8px]">
+              {["Unverified", "Verified"].map((item, index) => (
+                <h1
+                  onClick={() => setStatus(item)}
+                  key={index}
+                  className="font-lato text-[12px] font-bold leading-normal text-white cursor-pointer"
+                >
+                  {item}
+                </h1>
+              ))}
+            </PopoverContent>
+          </Popover>
         </div>
         <Button
           disabled={isLoading}
           onClick={() => handleUpdate()}
-          className="w-[154px] h-[39px] bg-[#313131] normal-case rounded-[5px] text-white font-lato text-[15px] font-medium flex justify-center items-center gap-2 shadow-none hover:shadow-none mt-[100px] mx-auto"
+          className="w-[154px] h-[39px] bg-[#313131] normal-case rounded-[5px] text-white font-lato text-[15px] font-medium flex justify-center items-center gap-2 shadow-none hover:shadow-none mt-[70px] mx-auto"
         >
           {isLoading && (
             <SpinnerCircularFixed

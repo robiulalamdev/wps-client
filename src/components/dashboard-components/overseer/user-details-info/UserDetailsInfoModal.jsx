@@ -32,7 +32,7 @@ const UserDetailsInfoModal = ({ open, onClose }) => {
       open={!!open?._id}
       className="bg-transparent border-none p-0 outline-none flex justify-center items-center w-full h-full"
     >
-      <div className="min-w-[715px] max-w-[715px] min-h-[700px] max-h-[700px] rounded-[10px] bg-[#D5D5D5] relative pr-[32px] pl-[9px] overflow-y-auto">
+      <div className="min-w-[715px] max-w-[715px] min-h-[700px]  rounded-[10px] bg-[#D5D5D5] relative pr-[32px] pl-[9px] overflow-y-auto">
         <div className="flex justify-between w-full h-full">
           <div className="min-w-[170px] max-w-[170px] min-h-[700px] pr-[16px] h-full border-r-[1px] border-[#ACACAC]">
             <div className="size-[87px] rounded-full bg-[#00000080] flex justify-center items-center mt-[33px] mx-auto">
