@@ -3,15 +3,21 @@ import SponsorWallpaper from "../../../components/dashboard-components/sponsors/
 import { useState } from "react";
 import SponsorUpdateModal from "../../../components/dashboard-components/sponsors/SponsorUpdateModal";
 import {
+  useAddNewTrendingSponsorMutation,
   useAddSponsorMutation,
   useGetMainSponsorsQuery,
+  useGetNewTrendingSponsorsQuery,
+  useGetOfficialSponsorsQuery,
 } from "../../../redux/features/sponsor/sponsorApi";
 import DashboardPrivateRoute from "@/middlewares/DashboardPrivateRoute";
 import { ROLE_DATA } from "@/lib/config";
 import DashboardLayout from "@/layouts/DashboardLayout";
+import SponsorUpdateModalForWallpaper from "@/components/dashboard-components/sponsors/SponsorUpdateModalForWallpaper";
 
 const Sponsors = () => {
   const { data: mainSponsors } = useGetMainSponsorsQuery();
+  const { data: officialSponsors } = useGetOfficialSponsorsQuery();
+  const { data: newTrendingSponsors } = useGetNewTrendingSponsorsQuery();
 
   // states
   const [selectedSearch, setSelectedSearch] = useState([]);
@@ -26,12 +32,22 @@ const Sponsors = () => {
   };
 
   const [addSponsor, { isLoading }] = useAddSponsorMutation();
+  const [addNewTrendingSponsor, { isLoading: newTrendingLoading }] =
+    useAddNewTrendingSponsorMutation();
 
   const handleAdd = async (items = [], type) => {
     const options = {
       data: { items: items, type: type },
     };
     const result = await addSponsor(options);
+    return result;
+  };
+
+  const handleAddNewTrending = async (items = []) => {
+    const options = {
+      data: { items: items, type: "Trending" },
+    };
+    const result = await addNewTrendingSponsor(options);
     return result;
   };
 
@@ -78,13 +94,16 @@ const Sponsors = () => {
               </div>
             </dir>
             <div className="relative grid grid-cols-5 gap-x-[60px] px-[62px] mt-[31px]">
-              <SponsorWallpaper items={mainSponsors?.data?.slice(0, 5)} />
+              <SponsorWallpaper
+                items={mainSponsors?.data?.slice(0, 5)}
+                srcKey="banner"
+              />
             </div>
           </div>
           <div className="mt-[24px]removed">
             <dir className="w-full h-[52px] rounded-[10px] bg-[#222222] mx-auto flex justify-center items-center cursor-pointer">
               <div
-                onClick={() => handleOpen("Search Sponsors")}
+                onClick={() => handleOpen("Official Wallpapers")}
                 className="max-w-[276px] w-full h-[40px] rounded-[10px] bg-[#1515154D] flex justify-center items-center gap-x-[8px]"
               >
                 <h1 className="text-white font-lato font-medium text-[15px] leading-normal">
@@ -94,13 +113,16 @@ const Sponsors = () => {
               </div>
             </dir>
             <div className="relative grid grid-cols-5 gap-x-[60px] px-[62px] mt-[37px]">
-              <SponsorWallpaper items={[]} />
+              <SponsorWallpaper
+                items={officialSponsors?.data?.slice(0, 5)}
+                srcKey="wallpaper"
+              />
             </div>
           </div>
           <div className="mt-[24px]removed">
             <dir className="w-full h-[52px] rounded-[10px] bg-[#222222] mx-auto flex justify-center items-center cursor-pointer">
               <div
-                onClick={() => handleOpen("New & Trending")}
+                onClick={() => handleOpen("Featured Trending & New")}
                 className="max-w-[276px] w-full h-[40px] rounded-[10px] bg-[#1515154D] flex justify-center items-center gap-x-[8px]"
               >
                 <h1 className="text-white font-lato font-medium text-[15px] leading-normal">
@@ -110,7 +132,10 @@ const Sponsors = () => {
               </div>
             </dir>
             <div className="relative grid grid-cols-5 gap-x-[60px] px-[62px] mt-[37px]">
-              <SponsorWallpaper items={[]} />
+              <SponsorWallpaper
+                items={newTrendingSponsors?.data?.slice(0, 5)}
+                srcKey="wallpaper"
+              />
             </div>
           </div>
         </div>
@@ -125,18 +150,26 @@ const Sponsors = () => {
           isLoading={isLoading}
         />
       )}
-      {open === "Search Sponsors" && (
-        <SponsorUpdateModal
-          items={selectedSearch}
-          name="Search Sponsors"
+      {open === "Official Wallpapers" && (
+        <SponsorUpdateModalForWallpaper
+          items={officialSponsors?.data?.slice(0, 4) || []}
+          open={open === "Official Wallpapers"}
+          name="Official Wallpapers"
           onClose={setOpen}
+          handleAdd={handleAdd}
+          isLoading={isLoading}
+          type="Official"
         />
       )}
-      {open === "New & Trending" && (
-        <SponsorUpdateModal
-          items={selectedTrending}
-          name="New & Trending"
+      {open === "Featured Trending & New" && (
+        <SponsorUpdateModalForWallpaper
+          items={newTrendingSponsors?.data?.slice(0, 4) || []}
+          open={open === "Featured Trending & New"}
+          name="Featured Trending & New"
           onClose={setOpen}
+          handleAdd={handleAddNewTrending}
+          isLoading={newTrendingLoading}
+          type="Trending"
         />
       )}
     </>

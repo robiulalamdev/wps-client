@@ -11,6 +11,15 @@ const featuredApi = api.injectEndpoints({
       }),
       invalidatesTags: ["sponsors"],
     }),
+    addNewTrendingSponsor: builder.mutation({
+      query: ({ data }) => ({
+        url: `/sponsors/create/new-trending`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["sponsors"],
+    }),
+
     addClickThrough: builder.mutation({
       query: ({ data, id }) => ({
         url: `/sponsors/click-through/${id}`,
@@ -24,12 +33,32 @@ const featuredApi = api.injectEndpoints({
     //     `/featured?targetType=${targetType}&type=${type}&limit=${limit}`,
     //   providesTags: ["featured"],
     // }),
+
+    //* for dashboard sponsor page
     getMainSponsors: builder.query({
       query: () => `/sponsors/main`,
       providesTags: ["sponsors"],
     }),
+    getOfficialSponsors: builder.query({
+      query: () => `/sponsors/official`,
+      providesTags: ["sponsors"],
+    }),
+    getNewTrendingSponsors: builder.query({
+      query: () => `/sponsors/new-trending`,
+      providesTags: ["sponsors"],
+    }),
+
+    //*  for public page
     getMainSponsorsData: builder.query({
       query: () => `/sponsors/public/main`,
+      providesTags: ["sponsors"],
+    }),
+    getOfficialSponsorsData: builder.query({
+      query: () => `/sponsors/public/official`,
+      providesTags: ["sponsors"],
+    }),
+    getNewTrendingSponsorsData: builder.query({
+      query: () => `/sponsors/public/new-trending`,
       providesTags: ["sponsors"],
     }),
   }),
@@ -37,7 +66,18 @@ const featuredApi = api.injectEndpoints({
 
 export const {
   useAddSponsorMutation,
+  useAddNewTrendingSponsorMutation,
+
+  //* */
   useGetMainSponsorsQuery,
+  useGetOfficialSponsorsQuery,
+  useGetNewTrendingSponsorsQuery,
+
+  //* */
   useGetMainSponsorsDataQuery,
+  useGetOfficialSponsorsDataQuery,
+  useGetNewTrendingSponsorsDataQuery,
+
+  //--------------
   useAddClickThroughMutation,
 } = featuredApi;

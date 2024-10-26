@@ -1,18 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 import LazyWallpaper from "../../common/wallpaper/LazyWallpaper";
 import overlay from "../../../assets/images/dashboard-images/sponsor/overlay.png";
 
-const SponsorWallpaper = ({ items = [] }) => {
+const SponsorWallpaper = ({ items = [], srcKey }) => {
   const total = 5 - items?.length;
   return (
     <>
       {items?.map((item, index) => (
         <div key={index} className={`w-full h-[115px] rounded-[10px] relative`}>
           <LazyWallpaper
-            src={item?.banner}
-            alt={item?.banner}
+            src={item?.[srcKey]}
+            alt={item?.[srcKey]}
             maxWidth={240}
             maxHeight={115}
             width={240}

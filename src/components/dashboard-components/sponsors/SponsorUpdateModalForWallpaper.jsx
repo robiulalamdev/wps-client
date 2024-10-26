@@ -5,22 +5,23 @@ import {
   idashClose,
 } from "../../../utils/icons/dashboard-icons/dashicons";
 import LazyWallpaper from "../../common/wallpaper/LazyWallpaper";
-import { useGetUserInfoBySlugMutation } from "../../../redux/features/users/usersApi";
 import { useMemo, useState } from "react";
 import { CLIENT_URL } from "../../../lib/config";
 import useInputPattern from "../../../lib/hooks/useInputPattern";
 import { handleItemSelection } from "../../../lib/services/service";
 import { SpinnerCircularFixed } from "spinners-react";
 import { toast } from "react-toastify";
+import { useGetInfoBySlugMutation } from "@/redux/features/wallpapers/wallpapersApi";
 
-const SponsorUpdateModal = ({
+const SponsorUpdateModalForWallpaper = ({
   items = [],
   open,
   onClose,
   handleAdd,
   isLoading = false,
+  type,
 }) => {
-  const [getUserInfoBySlug] = useGetUserInfoBySlugMutation();
+  const [getInfoBySlug] = useGetInfoBySlugMutation();
 
   const [selectedItems, setSelectedItems] = useState([]);
   const [storedItems, setStoredItems] = useState([]);
@@ -38,9 +39,9 @@ const SponsorUpdateModal = ({
 
       if (element?._id && element?.slug) {
         const newData = {
-          type: "Main",
-          targetType: "User",
-          targetId: element?.userId,
+          type: type,
+          targetId: element?.targetId || "",
+          targetType: "Wallpaper",
           serialNo: element?.serialNo || 0,
         };
         items.push(newData);
@@ -57,9 +58,9 @@ const SponsorUpdateModal = ({
 
       if (element?._id && element?.slug) {
         const newData = {
-          type: "Main",
-          targetType: "User",
-          targetId: element?.targetId,
+          type: type,
+          targetId: element?.targetId || "",
+          targetType: "Wallpaper",
           serialNo: element?.serialNo || 0,
         };
         items.push(newData);
@@ -67,12 +68,20 @@ const SponsorUpdateModal = ({
     }
 
     if (items.length > 0) {
-      const result = await handleAdd(items, "Main");
+      const result = await handleAdd(items, type);
       if (result?.data?.success) {
         toast.success("Sponsor added successfully");
         handleClose();
       } else {
         toast.error("Sponsor added unSuccessfully");
+      }
+    } else {
+      const result = await handleAdd(items, type);
+      if (result?.data?.success) {
+        toast.success("Sponsor removed successfully");
+        handleClose();
+      } else {
+        toast.error("Sponsor removed unSuccessfully");
       }
     }
   };
@@ -85,9 +94,9 @@ const SponsorUpdateModal = ({
       for (let i = 0; i < itemsData.length; i++) {
         const element = itemsData[i];
         newItems.push({
-          banner: element.banner || "",
-          slug: element?.slug || "",
-          targetId: element?.userId,
+          targetId: element?.targetId || "",
+          slug: element.slug || "",
+          wallpaper: element.wallpaper || "",
           _id: i + 1 || null,
           load: false,
           no: i + 1,
@@ -101,9 +110,9 @@ const SponsorUpdateModal = ({
 
       for (let i = 0; i < 4 - itemsData?.length; i++) {
         newItems.push({
-          banner: "",
+          targetId: "",
           slug: "",
-          targetId: null,
+          wallpaper: "",
           _id: null,
           load: false,
           no: itemsData.length + i + 1,
@@ -119,18 +128,18 @@ const SponsorUpdateModal = ({
     const stored = [...storedItems];
     stored[item.no - 1]["load"] = true;
     if (e.key === "Enter" && e.target.value) {
-      if (e.target.value.replaceAll(`${CLIENT_URL}/profiles/`, "")) {
+      if (e.target.value.replaceAll(`${CLIENT_URL}/w/`, "")) {
         const options = {
-          slug: e.target.value.replaceAll(`${CLIENT_URL}/profiles/`, ""),
+          slug: e.target.value.replaceAll(`${CLIENT_URL}/w/`, ""),
           data: {},
         };
-        const result = await getUserInfoBySlug(options);
+        const result = await getInfoBySlug(options);
 
         if (result?.data?.data?._id) {
           stored[item.no - 1] = {
-            banner: result?.data?.data.banner || "",
-            slug: result?.data?.data?.slug || "",
             targetId: result?.data?.data?._id,
+            slug: result?.data?.data?.slug,
+            wallpaper: result?.data?.data?.wallpaper,
             load: false,
             _id: item.no,
             no: item.no,
@@ -138,9 +147,9 @@ const SponsorUpdateModal = ({
           };
         } else {
           stored[item.no - 1] = {
-            banner: "",
+            targetId: "",
             slug: "",
-            targetId: null,
+            wallpaper: "",
             _id: null,
             load: false,
             no: item.no,
@@ -155,9 +164,9 @@ const SponsorUpdateModal = ({
         stored[item.no - 1]
       );
       stored[item.no - 1] = {
-        banner: "",
+        targetId: "",
         slug: "",
-        targetId: null,
+        wallpaper: "",
         _id: null,
         load: false,
         no: item.no,
@@ -196,10 +205,10 @@ const SponsorUpdateModal = ({
                   key={index}
                   className={`max-w-[200px] w-full h-[140px] rounded-[5px] overflow-hidden relative`}
                 >
-                  {item?.banner && item?.slug ? (
+                  {item?.wallpaper && item?.slug ? (
                     <LazyWallpaper
-                      src={item?.banner}
-                      alt={item?.banner}
+                      src={item?.wallpaper}
+                      alt={item?.wallpaper}
                       maxWidth={200}
                       maxHeight={140}
                       width={200}
@@ -223,10 +232,10 @@ const SponsorUpdateModal = ({
                       onKeyPress={(e) => handleKeyPress(e, item, index)}
                       type="url"
                       defaultValue={
-                        item?._id ? `${CLIENT_URL}/profiles/${item?.slug}` : ""
+                        item?._id ? `${CLIENT_URL}/w/${item?.slug}` : ""
                       }
-                      onInput={(e) => handleUrl(e, `${CLIENT_URL}/profiles/`)}
-                      placeholder="Profile URL"
+                      onInput={(e) => handleUrl(e, `${CLIENT_URL}/w/`)}
+                      placeholder="Wallpaper URL"
                       required
                       className="w-full h-full bg-transparent border-none outline-none placeholder:font-lato font-lato text-[12px] font-medium placeholder:text-[#323232] text-[#323232] leading-normal"
                     />
@@ -246,10 +255,10 @@ const SponsorUpdateModal = ({
                     key={index}
                     className={`max-w-[200px] w-full h-[140px] rounded-[5px] overflow-hidden relative`}
                   >
-                    {item?.banner && item?.slug ? (
+                    {item?.wallpaper && item?.slug ? (
                       <LazyWallpaper
-                        src={item?.banner}
-                        alt={item?.banner}
+                        src={item?.wallpaper}
+                        alt={item?.wallpaper}
                         maxWidth={200}
                         maxHeight={140}
                         width={200}
@@ -273,12 +282,10 @@ const SponsorUpdateModal = ({
                         onKeyPress={(e) => handleKeyPress(e, item, index)}
                         type="url"
                         defaultValue={
-                          item?._id
-                            ? `${CLIENT_URL}/profiles/${item?.slug}`
-                            : ""
+                          item?._id ? `${CLIENT_URL}/w/${item?.slug}` : ""
                         }
-                        onInput={(e) => handleUrl(e, `${CLIENT_URL}/profiles/`)}
-                        placeholder="Profile URL"
+                        onInput={(e) => handleUrl(e, `${CLIENT_URL}/w/`)}
+                        placeholder="Wallpaper URL"
                         required
                         className="w-full h-full bg-transparent border-none outline-none placeholder:font-lato font-lato text-[12px] font-medium placeholder:text-[#323232] text-[#323232] leading-normal"
                       />
@@ -293,9 +300,7 @@ const SponsorUpdateModal = ({
         <Button
           disabled={isLoading}
           onClick={() => handleAddFeatured()}
-          className={`w-[129px] h-[38px] rounded-[5px] ${
-            selectedItems?.length > 0 ? "bg-[#2824ff]" : "bg-[#2924FF33]"
-          } shadow-none hover:shadow-none block mx-auto mt-[57px] p-0 text-[15px] text-[#C4C4C4] font-bakbak-one leading-normal normal-case font-normal flex justify-center items-center`}
+          className={`w-[129px] h-[38px] rounded-[5px] bg-[#2824ff] shadow-none hover:shadow-none block mx-auto mt-[57px] p-0 text-[15px] text-[#C4C4C4] font-bakbak-one leading-normal normal-case font-normal flex justify-center items-center`}
         >
           {" "}
           {isLoading && (
@@ -321,4 +326,4 @@ const SponsorUpdateModal = ({
   );
 };
 
-export default SponsorUpdateModal;
+export default SponsorUpdateModalForWallpaper;
