@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Button, Dialog } from "@material-tailwind/react";
 import {
+  iDashBrandName,
   iDashCopySponsorInfo,
   idashClose,
 } from "../../../utils/icons/dashboard-icons/dashicons";
@@ -87,6 +88,7 @@ const FeaturedBrandSearchModal = ({
           targetId: element?.targetId || "",
           banner: element.banner || "",
           slug: element?.slug || "",
+          brandName: element?.brandName || "",
           _id: i + 1 || null,
           load: false,
           no: i + 1,
@@ -103,6 +105,7 @@ const FeaturedBrandSearchModal = ({
           targetId: "",
           banner: "",
           slug: "",
+          brandName: "",
           _id: null,
           load: false,
           no: itemsData.length + i + 1,
@@ -129,6 +132,7 @@ const FeaturedBrandSearchModal = ({
             targetId: result?.data?.data?._id,
             banner: result?.data?.data.banner || "",
             slug: result?.data?.data?.slug || "",
+            brandName: result?.data?.data?.brandName,
             load: false,
             _id: item.no,
             no: item.no,
@@ -139,6 +143,7 @@ const FeaturedBrandSearchModal = ({
             targetId: "",
             banner: "",
             slug: "",
+            brandName: "",
             _id: null,
             load: false,
             no: item.no,
@@ -156,6 +161,7 @@ const FeaturedBrandSearchModal = ({
         targetId: "",
         banner: "",
         slug: "",
+        brandName: "",
         _id: null,
         load: false,
         no: item.no,
@@ -204,12 +210,18 @@ const FeaturedBrandSearchModal = ({
                     <div className="w-full h-full rounded-[5px] object-cover cursor-pointer bg-[#00000080]"></div>
                   )}
                 </div>
-                {/* <div className="bg-[#C0C0C0] w-full h-[35px] rounded-[5px] flex items-center gap-[7px] px-[8px] mt-[9px]">
-                  <div>{iDashCopySponsorInfo}</div>
-                  <h1 className="font-lato text-[12px] font-medium text-[#323232] leading-normal">
-                    Wallpaper URL
-                  </h1>
-                </div> */}
+
+                <div className="bg-[#C0C0C0] w-full h-[35px] rounded-[5px] flex items-center gap-[7px] px-[8px] mt-[9px]">
+                  <div>{iDashBrandName}</div>
+                  <input
+                    type="text"
+                    value={item?.brandName ? item?.brandName : ""}
+                    placeholder="Brand Name"
+                    required={false}
+                    readOnly
+                    className="w-full h-full bg-transparent border-none outline-none placeholder:font-lato font-lato text-[12px] font-medium placeholder:text-[#323232] text-[#323232] leading-normal"
+                  />
+                </div>
                 <div className="bg-[#C0C0C0] w-full h-[35px] rounded-[5px] flex items-center gap-[7px] px-[8px] mt-[8px]">
                   <div>{iDashCopySponsorInfo}</div>
                   <input

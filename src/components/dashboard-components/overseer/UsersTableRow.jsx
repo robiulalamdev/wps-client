@@ -166,15 +166,20 @@ const UsersTableRow = ({
               >
                 <PopoverHandler
                   onClick={() => setOpen(true)}
-                  className="cursor-pointer"
+                  className="cursor-pointer group"
                 >
-                  <Image
-                    src={detailsButton}
-                    alt=""
-                    width={35}
-                    height={35}
-                    className=""
-                  />
+                  <div>
+                    <Image
+                      src={detailsButton}
+                      alt=""
+                      width={35}
+                      height={35}
+                      className="group-hover:block hidden"
+                    />
+                    <div className="group-hover:hidden min-w-[35px] max-w-[35px] min-h-[35px] max-h-[35px] flex justify-center items-center">
+                      {iDashHrThreeDots}
+                    </div>
+                  </div>
                 </PopoverHandler>
                 <PopoverContent className="z-50 w-[176px] h-[140px] rounded-[5px] bg-[#D9D9D9] border-none shadow-none pt-[10px] px-[12px] pb-[10px] flex flex-col justify-between items-start">
                   <h1
