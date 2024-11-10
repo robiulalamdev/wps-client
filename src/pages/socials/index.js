@@ -28,7 +28,8 @@ const Socials = () => {
           Socials
         </h1>
 
-        <div className="border-t-[1px] border-[#5A5A5A] w-full mt-[14px] mb-[15px] md:mt-[23px] md:mb-[23px]"></div>
+        {/* <div className="border-t-[1px] border-[#5A5A5A] w-full mt-[14px] mb-[15px] md:mt-[23px] md:mb-[23px]"></div> */}
+        <div className="w-full mt-[14px] mb-[15px] md:mt-[23px] md:mb-[23px]"></div>
         <div
           className="md:h-[294px] w-full rounded-[5px] hidden md:block"
           style={{

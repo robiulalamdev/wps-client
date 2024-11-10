@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
       <h1 className="text-[15px] md:text-[25px] text-center font-bakbak-one text-white mb-[15px] md:mb-[23px]">
         Privacy Policy
       </h1>
-      <hr style={{ border: "1px solid #5A5A5A" }} />
+      {/* <hr style={{ border: "1px solid #5A5A5A" }} /> */}
 
       <div className="pp-content-container">
         <h6 className="">Privacy Policy for The Wallpaper Society</h6>

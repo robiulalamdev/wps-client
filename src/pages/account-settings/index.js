@@ -39,7 +39,8 @@ const AccountSettings = () => {
         <h1 className="text-[15px] md:text-[25px] text-center font-bakbak-one text-[#FFF] mb-[15px] md:mb-[33px]">
           Account Settings
         </h1>
-        <div className="border-t-[1px] border-[#5A5A5A] w-full mb-[19px] md:mb-[17px]"></div>
+        {/* <div className="border-t-[1px] border-[#5A5A5A] w-full mb-[19px] md:mb-[17px]"></div> */}
+        <div className="w-full mb-[19px] md:mb-[17px]"></div>
         <div className="overflow-x-auto w-fit mx-auto">
           <div className="bg-[#00000033] rounded-[100px] max-w-fit w-full h-[45px] mx-auto flex justify-between items-center px-[8px] gap-[10px]">
             {tabs.map((t, i) => (

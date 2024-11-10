@@ -98,7 +98,8 @@ const DraftAndPublish = () => {
         <h1 className="text-[#FFF] text-center font-bakbak-one text-[15px] md:text-[25px]">
           The Vault
         </h1>
-        <div className="border-t-[1px] border-[#5A5A5A] mt-[15px] mb-[24px] md:mt-[39.51px] md:mb-[26.49px] w-full"></div>
+        {/* <div className="border-t-[1px] border-[#5A5A5A] mt-[15px] mb-[24px] md:mt-[39.51px] md:mb-[26.49px] w-full"></div> */}
+        <div className="mt-[15px] mb-[24px] md:mt-[39.51px] md:mb-[26.49px] w-full"></div>
 
         <div className="max-w-[295px] flex justify-start lg:justify-center mb-[21px]">
           <div className="bg-[#00000033] rounded-[100px] w-[186px] h-[45px] flex justify-between items-center px-[8px]">

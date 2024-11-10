@@ -9,7 +9,7 @@ const CommunityRules = () => {
       <h1 className="text-[15px] md:text-[25px] text-center font-bakbak-one text-white mb-[15px] md:mb-[23px]">
         Community Rules
       </h1>
-      <hr style={{ border: "1px solid #5A5A5A" }} />
+      {/* <hr style={{ border: "1px solid #5A5A5A" }} /> */}
 
       <div className="relative mt-[15px] md:mt-[23px] rounded-[7px] md:rounded-[14px] overflow-hidden">
         <img

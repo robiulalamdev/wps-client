@@ -74,7 +74,8 @@ const MediaCenterMain = ({ pathname = "Favorites" }) => {
         <h1 className="text-[15px] md:text-[25px] text-center font-bakbak-one text-[#FFF] mb-[15px] md:mb-[40px]">
           The Command Center
         </h1>
-        <div className="border-t-[1px] border-[#5A5A5A] w-full mb-[11px] md:mb-[62px]"></div>
+        {/* <div className="border-t-[1px] border-[#5A5A5A] w-full mb-[11px] md:mb-[62px]"></div> */}
+        <div className="w-full mb-[11px] md:mb-[62px]"></div>
 
         <p className="text-center font-lato text-[12px] text-[#939393]">
           All favorite wallpapers and collections will be displayed on your
