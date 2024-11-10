@@ -68,6 +68,7 @@ const FeaturedBrandSearchModal = ({
         items.push(newData);
       }
     }
+
     if (items.length > 0) {
       const result = await handleAdd(items, "Brand");
       if (result?.data?.success) {
@@ -192,6 +193,25 @@ const FeaturedBrandSearchModal = ({
 
   // console.log(selectedItems);
 
+  const handleSetTitle = async (e, item = null) => {
+    const stored = [...storedItems];
+    stored[item.no - 1]["load"] = true;
+    if (e.target.value) {
+      stored[item.no - 1] = { ...stored[item.no - 1], title: e.target.value };
+    }
+    stored[item.no - 1]["load"] = false;
+    setStoredItems(stored);
+  };
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  };
+  const debouncedSetTitle = debounce(handleSetTitle, 1200);
+
   return (
     <Dialog
       open={open}
@@ -226,6 +246,7 @@ const FeaturedBrandSearchModal = ({
                 <div className="bg-[#C0C0C0] w-full h-[35px] rounded-[5px] flex items-center gap-[7px] px-[8px] mt-[9px]">
                   <div>{iDashBrandName}</div>
                   <input
+                    onChange={(e) => debouncedSetTitle(e, item)}
                     onKeyPress={(e) => handleSetTitleByKeyPress(e, item)}
                     type="text"
                     defaultValue={item?.title ? item?.title : ""}
