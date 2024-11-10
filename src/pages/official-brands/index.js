@@ -121,9 +121,9 @@ const OfficialBrands = () => {
                     <LazyWallpaper
                       src={item?.banner}
                       alt={item?.banner}
-                      maxWidth={500}
+                      maxWidth={600}
                       maxHeight={257}
-                      width={500}
+                      width={600}
                       height={257}
                       className="w-full h-full !rounded-[10px] md:rounded-[30px] object-cover"
                     />

@@ -43,6 +43,7 @@ const FeaturedBrandSearchModal = ({
           targetId: element?.targetId || "",
           targetType: "User",
           serialNo: element?.serialNo || 0,
+          title: element?.title || "",
         };
         items.push(newData);
       }
@@ -62,6 +63,7 @@ const FeaturedBrandSearchModal = ({
           targetId: element?.targetId || "",
           targetType: "User",
           serialNo: element?.serialNo || 0,
+          title: element?.title || "",
         };
         items.push(newData);
       }
@@ -88,7 +90,7 @@ const FeaturedBrandSearchModal = ({
           targetId: element?.targetId || "",
           banner: element.banner || "",
           slug: element?.slug || "",
-          brandName: element?.brandName || "",
+          title: element?.title || "",
           _id: i + 1 || null,
           load: false,
           no: i + 1,
@@ -105,7 +107,7 @@ const FeaturedBrandSearchModal = ({
           targetId: "",
           banner: "",
           slug: "",
-          brandName: "",
+          title: "",
           _id: null,
           load: false,
           no: itemsData.length + i + 1,
@@ -132,7 +134,7 @@ const FeaturedBrandSearchModal = ({
             targetId: result?.data?.data?._id,
             banner: result?.data?.data.banner || "",
             slug: result?.data?.data?.slug || "",
-            brandName: result?.data?.data?.brandName,
+            title: result?.data?.data?.brandName,
             load: false,
             _id: item.no,
             no: item.no,
@@ -143,7 +145,7 @@ const FeaturedBrandSearchModal = ({
             targetId: "",
             banner: "",
             slug: "",
-            brandName: "",
+            title: "",
             _id: null,
             load: false,
             no: item.no,
@@ -161,12 +163,22 @@ const FeaturedBrandSearchModal = ({
         targetId: "",
         banner: "",
         slug: "",
-        brandName: "",
+        title: "",
         _id: null,
         load: false,
         no: item.no,
         serialNo: 0,
       };
+    }
+    stored[item.no - 1]["load"] = false;
+    setStoredItems(stored);
+  };
+
+  const handleSetTitleByKeyPress = async (e, item = null) => {
+    const stored = [...storedItems];
+    stored[item.no - 1]["load"] = true;
+    if (e.key === "Enter" && e.target.value) {
+      stored[item.no - 1] = { ...stored[item.no - 1], title: e.target.value };
     }
     stored[item.no - 1]["load"] = false;
     setStoredItems(stored);
@@ -202,7 +214,7 @@ const FeaturedBrandSearchModal = ({
                       alt={item?.banner}
                       maxWidth={200}
                       maxHeight={140}
-                      width={200}
+                      width={400}
                       height={140}
                       className="w-full h-full rounded-[5px] object-cover cursor-pointer"
                     />
@@ -214,11 +226,11 @@ const FeaturedBrandSearchModal = ({
                 <div className="bg-[#C0C0C0] w-full h-[35px] rounded-[5px] flex items-center gap-[7px] px-[8px] mt-[9px]">
                   <div>{iDashBrandName}</div>
                   <input
+                    onKeyPress={(e) => handleSetTitleByKeyPress(e, item)}
                     type="text"
-                    value={item?.brandName ? item?.brandName : ""}
+                    defaultValue={item?.title ? item?.title : ""}
                     placeholder="Brand Name"
-                    required={false}
-                    readOnly
+                    required={true}
                     className="w-full h-full bg-transparent border-none outline-none placeholder:font-lato font-lato text-[12px] font-medium placeholder:text-[#323232] text-[#323232] leading-normal"
                   />
                 </div>

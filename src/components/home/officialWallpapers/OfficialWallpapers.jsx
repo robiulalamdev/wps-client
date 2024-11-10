@@ -75,7 +75,9 @@ const OfficialWallpapers = () => {
 
           <div className="md:grid grid-cols-2 gap-x-[36px] hidden md:inline-block">
             <div
-              onClick={() => router.push(`/w/${data?.data[0]?.slug}`)}
+              onClick={() =>
+                router.push(`/profiles/${data?.data[0]?.authorSlug}`)
+              }
               className={`min-h-[335px] max-h-[535px] w-full rounded-[30px] overflow-hidden relative`}
             >
               <LazyWallpaper
@@ -93,7 +95,9 @@ const OfficialWallpapers = () => {
             </div>
             <div className="grid grid-cols-1 gap-y-[30px]">
               <div
-                onClick={() => router.push(`/w/${data?.data[1]?.slug}`)}
+                onClick={() =>
+                  router.push(`/profiles/${data?.data[1]?.authorSlug}`)
+                }
                 className="h-[253px] w-full rounded-[30px] overflow-hidden relative"
               >
                 <LazyWallpaper
@@ -109,7 +113,9 @@ const OfficialWallpapers = () => {
                 />
               </div>
               <div
-                onClick={() => router.push(`/w/${data?.data[2]?.slug}`)}
+                onClick={() =>
+                  router.push(`/profiles/${data?.data[2]?.authorSlug}`)
+                }
                 className="h-[253px] w-full rounded-[30px] overflow-hidden relative"
               >
                 <LazyWallpaper
@@ -130,7 +136,9 @@ const OfficialWallpapers = () => {
           {/* // sm */}
           <div className="grid grid-cols-2 gap-x-[9px] gap-y-[10px] md:hidden">
             <div
-              onClick={() => router.push(`/w/${data?.data[0]?.slug}`)}
+              onClick={() =>
+                router.push(`/profiles/${data?.data[0]?.authorSlug}`)
+              }
               className="max-h-[196px] w-full rounded-[12px] overflow-hidden relative"
             >
               <LazyWallpaper
@@ -146,7 +154,9 @@ const OfficialWallpapers = () => {
               />
             </div>
             <div
-              onClick={() => router.push(`/w/${data?.data[1]?.slug}`)}
+              onClick={() =>
+                router.push(`/profiles/${data?.data[1]?.authorSlug}`)
+              }
               className="max-h-[196px] w-full rounded-[12px] overflow-hidden relative"
             >
               <LazyWallpaper
@@ -162,7 +172,9 @@ const OfficialWallpapers = () => {
               />
             </div>
             <div
-              onClick={() => router.push(`/w/${data?.data[2]?.slug}`)}
+              onClick={() =>
+                router.push(`/profiles/${data?.data[2]?.authorSlug}`)
+              }
               className="min-h-[131px] max-h-[131px] w-full rounded-[12px] overflow-hidden relative col-span-2"
             >
               <LazyWallpaper

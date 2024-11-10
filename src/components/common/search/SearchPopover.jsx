@@ -83,7 +83,7 @@ const SearchPopover = ({
                       alt={item?.banner}
                       maxWidth={140}
                       maxHeight={60}
-                      width={140}
+                      width={400}
                       height={60}
                       className="w-full h-full rounded-[3px] md:rounded-[5px] object-cover hover:scale-110 duration-300 cursor-pointer"
                     />
@@ -96,7 +96,7 @@ const SearchPopover = ({
                         : "text-white hover:text-[#FDF516]"
                     }`}
                   >
-                    {item.name}
+                    {item?.title}
                   </h1>
                 </div>
               ))}
