@@ -130,7 +130,7 @@ const OfficialBrands = () => {
                   </div>
                   <Link href={`/profiles/${item?.slug}`}>
                     <h1 className="font-bold font-lato text-[10px] md:text-[20px] text-white mt-[3px] md:mt-[11px] text-center">
-                      {item.name}
+                      {search ? item.name : item?.title || item?.name}
                     </h1>
                   </Link>
                 </div>
