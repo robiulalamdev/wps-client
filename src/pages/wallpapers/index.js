@@ -25,7 +25,7 @@ const SearchWallpapers = () => {
   const classification = router?.query?.classification;
   const height = router?.query?.height;
   const width = router?.query?.width;
-  const screen_type = router?.query?.screen_type;
+  const screen_type = router?.query?.screen_type || "";
   const sort_by = router?.query?.sort_by;
   const date = router?.query?.date;
   const tag = router?.query?.tag;
@@ -114,6 +114,25 @@ const SearchWallpapers = () => {
       setTab3(classification);
     }
   }, [queries]);
+
+  const detectDevice = () => {
+    if (!router.isReady) return;
+    const isPhone = window.innerWidth <= 768;
+    if (screen_type === "" && isPhone) {
+      handleQuery("screen_type", "Phones");
+    }
+  };
+
+  useEffect(() => {
+    if (router.isReady) {
+      detectDevice();
+      window.addEventListener("resize", detectDevice);
+    }
+
+    return () => {
+      window.removeEventListener("resize", detectDevice);
+    };
+  }, []);
 
   return (
     <>
