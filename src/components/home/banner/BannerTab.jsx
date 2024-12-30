@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { I_Desktop_Tab, I_Phone_Tab } from "@/utils/icons/icons";
+import { I_Desktop_Tab, I_Phone_Tab, iRefresh } from "@/utils/icons/icons";
 import { Button } from "@material-tailwind/react";
 const tabs1 = ["Trending", "New"];
 const tabs2 = ["All", "Illustration", "AI", "Photography"];
@@ -11,8 +11,13 @@ const screen_typeTabs = [
 ];
 
 const BannerTab = ({ tab1, setTab1, tab2, setTab2, tab3, setTab3 }) => {
+  const handleReset = async () => {
+    setTab1("Trending");
+    setTab2("All");
+    setTab3("Desktop");
+  };
   return (
-    <div className="py-[10px] md:py-[14px]">
+    <div className="py-[10px] md:py-[14px] overflow-hidden">
       <div className="flex items-center justify-between md:justify-start gap-3 md:gap-8">
         <div className="bg-[#00000033] rounded-[100px] md:rounded-[23.5px] w-[177px] h-[40px] md:w-[192px] md:h-[42px] flex justify-center items-center">
           {tabs1.map((t, i) => (
@@ -76,6 +81,13 @@ const BannerTab = ({ tab1, setTab1, tab2, setTab2, tab3, setTab3 }) => {
             </Button>
           ))}
         </div>
+
+        <Button
+          onClick={() => handleReset()}
+          className="shadow-none hover:shadow-none normal-case min-w-[57px] max-w-[57px] h-[42px] bg-[#00000033] rounded-[9px] text-[12px] font-lato font-semibold text-[#FFF] flex justify-center items-center p-0"
+        >
+          <div className="min-w-[24px] min-h-[24px]">{iRefresh}</div>
+        </Button>
         {/* <h1 className="text-white text-[23px] leading-[39px] font-bakbak-one md:hidden font-normal">
           Wallpapers
         </h1> */}
