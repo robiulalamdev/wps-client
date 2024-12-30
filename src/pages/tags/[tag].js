@@ -33,7 +33,9 @@ const TagDetails = () => {
         setWallpapers(items);
         setTotalViews(data?.data?.totalView);
         setTotalWallpapers(data?.data?.totalWallpapers);
-        setTags(data?.data?.relatedTags);
+        if (data?.data?.relatedTags?.length > 0) {
+          setTags(data?.data?.relatedTags?.slice(0, 10));
+        }
       }
       if (currentPage > 1) {
         setWallpapers((prevWallpapers) => [
