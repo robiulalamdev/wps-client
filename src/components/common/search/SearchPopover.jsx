@@ -26,6 +26,11 @@ const SearchPopover = ({
   // const tags = searchParams.get("tags");
   const [open, setOpen] = useState(false);
 
+  const handleNavigate = (item) => {
+    // handleQuery("name", item?.username)
+    router.push(`/profiles/${item?.slug}`);
+  };
+
   return (
     <Popover placement={placement}>
       <PopoverHandler>{handler}</PopoverHandler>
@@ -75,7 +80,7 @@ const SearchPopover = ({
               {official_brands?.data?.slice(0, 10).map((item, index) => (
                 <div key={index} className={``}>
                   <div
-                    onClick={() => handleQuery("name", item?.username)}
+                    onClick={() => handleNavigate(item)}
                     className={`w-full h-[50px] md:h-[60px] rounded-[3px] md:rounded-[5px] overflow-hidden relative`}
                   >
                     <LazyWallpaper
@@ -89,7 +94,7 @@ const SearchPopover = ({
                     />
                   </div>
                   <h1
-                    onClick={() => handleQuery("name", item?.username)}
+                    onClick={() => handleNavigate(item)}
                     className={`font-bold font-lato text-[8px] md:text-[12px] mt-[3px] md:mt-[6px] text-center cursor-pointer ${
                       item.username === name
                         ? "text-[#FDF516]"
