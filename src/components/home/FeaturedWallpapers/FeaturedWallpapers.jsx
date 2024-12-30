@@ -44,7 +44,7 @@ const FeaturedWallpapers = () => {
               <div
                 onClick={() => router.push(`/w/${item?.slug}`)}
                 key={index}
-                className={`w-full rounded-[10px] overflow-hidden
+                className={`w-full rounded-[10px] overflow-hidden relative
                   ${
                     index > 0
                       ? ` ${

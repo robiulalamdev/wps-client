@@ -112,7 +112,7 @@ const Sponsor = () => {
                 handleClickThrough(items?.[0]?._id);
                 router.push(`/profiles/${items?.[0]?.slug}`);
               }}
-              className="min-h-[131px] max-h-[131px] w-full rounded-[12px] overflow-hidden col-span-2"
+              className="min-h-[131px] max-h-[131px] w-full rounded-[12px] overflow-hidden relative col-span-2"
             >
               <LazyWallpaper
                 src={items?.[0]?.banner}
@@ -129,7 +129,7 @@ const Sponsor = () => {
                 handleClickThrough(items?.[1]?._id);
                 router.push(`/profiles/${items?.[1]?.slug}`);
               }}
-              className="h-[92px] max-w-[196px] rounded-[12px] overflow-hidden"
+              className="h-[92px] max-w-[196px] rounded-[12px] overflow-hidden relative"
             >
               <LazyWallpaper
                 src={items?.[1]?.banner}
@@ -146,7 +146,7 @@ const Sponsor = () => {
                 handleClickThrough(items?.[2]?._id);
                 router.push(`/profiles/${items?.[2]?.slug}`);
               }}
-              className="h-[92px] max-w-[196px] rounded-[12px] overflow-hidden"
+              className="h-[92px] max-w-[196px] rounded-[12px] overflow-hidden relative"
             >
               <LazyWallpaper
                 src={items?.[2]?.banner}
@@ -163,7 +163,7 @@ const Sponsor = () => {
                 handleClickThrough(items?.[3]?._id);
                 router.push(`/profiles/${items?.[3]?.slug}`);
               }}
-              className="min-h-[131px] max-h-[131px] w-full rounded-[12px] overflow-hidden col-span-2"
+              className="min-h-[131px] max-h-[131px] w-full rounded-[12px] overflow-hidden relative col-span-2"
             >
               <LazyWallpaper
                 src={items?.[3]?.banner}
