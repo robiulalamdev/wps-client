@@ -16,8 +16,8 @@ const BannerWallpapers = ({ item = null }) => {
           alt={item?.wallpaper}
           maxWidth={400}
           maxHeight={190}
-          width={500}
-          height={320}
+          width={700}
+          height={450}
           className="w-full h-full object-cover hover:scale-110 rounded-[5px] md:rounded-[10px] 2xl:rounded-[15px] duration-300 cursor-pointer"
         />
         {item?.isFeatured === true && <FeaturedOverlay />}

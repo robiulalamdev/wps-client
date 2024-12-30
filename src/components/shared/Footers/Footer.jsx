@@ -14,7 +14,7 @@ const Footer = () => {
             <p className="text-[15px] md:text-[20px] text-white font-bakbak-one mb-[9px] md:mb-[4px]">
               Navigation
             </p>
-            <Link href="/home">
+            <Link href="/">
               <p className="text-[#939393] font-bakbak-one text-[15px] mt-[7px] md:mt-[4px]">
                 Home
               </p>
