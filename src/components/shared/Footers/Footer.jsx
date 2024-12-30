@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="w-full h-fit mt-[145px]">
       <div className="flex flex-col md:flex-row items-start gap-y-[13px] md:gap-x-[120px] lg:gap-x-[189px] xl:gap-x-[240px] font-bakbak-one">
-        <h1 className="text-white text-[30px] md:text-[40px] font-bakbak-one">
+        <h1 className="text-white text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] xl:text-[35px] 2xl:text-[40px] font-bakbak-one">
           THE WALLPAPER SOCIETY
         </h1>
 
