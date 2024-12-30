@@ -56,9 +56,9 @@ const MetaTags = ({
       <meta data-rh="true" name="apple-mobile-web-app-title" content={title} />
       <meta data-rh="true" name="application-name" content={site_name} />
       <meta data-rh="true" name="author" content={username} />
-      <meta data-rh="true" name="msapplication-TileColor" content="#ffffff" />
+      <meta data-rh="true" name="msapplication-TileColor" content="#121212" />
       <meta data-rh="true" name="msapplication-TileImage" content={image} />
-      <meta data-rh="true" name="theme-color" content="#ffffff" />
+      <meta data-rh="true" name="theme-color" content="#121212" />
 
       <meta data-rh="true" name="twitter:url" content={url} />
       <meta data-rh="true" name="twitter:image" content={image} />
