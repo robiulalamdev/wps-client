@@ -14,7 +14,7 @@ const VerifiedRoleIcon = ({ status = null, role = null, className = "" }) => {
               className={`${
                 className
                   ? className
-                  : "min-w-[22px] max-w-[22px] min-h-[22px] max-h-[22px]"
+                  : "min-w-[17px] max-w-[17px] min-h-[17px] max-h-[17px] md:min-w-[22px] md:max-w-[22px] md:min-h-[22px] md:max-h-[22px]"
               }`}
             />
           )}
@@ -24,7 +24,7 @@ const VerifiedRoleIcon = ({ status = null, role = null, className = "" }) => {
               className={`${
                 className
                   ? className
-                  : "min-w-[22px] max-w-[22px] min-h-[22px] max-h-[22px]"
+                  : "min-w-[17px] max-w-[17px] min-h-[17px] max-h-[17px] md:min-w-[22px] md:max-w-[22px] md:min-h-[22px] md:max-h-[22px]"
               }`}
             />
           )}
@@ -34,7 +34,7 @@ const VerifiedRoleIcon = ({ status = null, role = null, className = "" }) => {
               className={`${
                 className
                   ? className
-                  : "min-w-[22px] max-w-[22px] min-h-[22px] max-h-[22px]"
+                  : "min-w-[17px] max-w-[17px] min-h-[17px] max-h-[17px] md:min-w-[22px] md:max-w-[22px] md:min-h-[22px] md:max-h-[22px]"
               }`}
             />
           )}
@@ -44,7 +44,7 @@ const VerifiedRoleIcon = ({ status = null, role = null, className = "" }) => {
               className={`${
                 className
                   ? className
-                  : "min-w-[22px] max-w-[22px] min-h-[22px] max-h-[22px]"
+                  : "min-w-[17px] max-w-[17px] min-h-[17px] max-h-[17px] md:min-w-[22px] md:max-w-[22px] md:min-h-[22px] md:max-h-[22px]"
               }`}
             />
           )}
@@ -54,7 +54,7 @@ const VerifiedRoleIcon = ({ status = null, role = null, className = "" }) => {
               className={`${
                 className
                   ? className
-                  : "min-w-[22px] max-w-[22px] min-h-[22px] max-h-[22px]"
+                  : "min-w-[17px] max-w-[17px] min-h-[17px] max-h-[17px] md:min-w-[22px] md:max-w-[22px] md:min-h-[22px] md:max-h-[22px]"
               }`}
             />
           )}

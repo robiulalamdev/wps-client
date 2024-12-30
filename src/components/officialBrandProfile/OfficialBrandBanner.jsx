@@ -49,7 +49,7 @@ const OfficialBrandBanner = ({ user }) => {
                   <VerifiedRoleIcon status={user?.verified} role={user?.role} />
                 </div>
                 {user?.slug && (
-                  <h1 className="text-[#5A5A5A] text-[15px] leading-normal font-bakbak-one text-nowrap hidden md:block mb-[7px] oneLine">
+                  <h1 className="text-[#939393] text-[12px] leading-normal font-bold font-lato text-nowrap oneLine hidden md:block mb-[7px]">
                     @{user?.slug}
                   </h1>
                 )}
