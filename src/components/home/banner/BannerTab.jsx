@@ -16,6 +16,7 @@ const BannerTab = ({ tab1, setTab1, tab2, setTab2, tab3, setTab3 }) => {
     setTab2("All");
     setTab3("Desktop");
   };
+
   return (
     <div className="py-[10px] md:py-[14px] overflow-hidden">
       <div className="flex items-center justify-between md:justify-start gap-3 md:gap-8">
@@ -66,6 +67,7 @@ const BannerTab = ({ tab1, setTab1, tab2, setTab2, tab3, setTab3 }) => {
             </Button>
           ))}
         </div>
+
         <div className="bg-[#00000033] rounded-[100px] md:rounded-[23.5px] w-[102px] h-[40px] md:w-[192px] md:h-[42px] flex justify-center items-center lg:hidden">
           {screen_typeTabs.map((t, i) => (
             <Button
@@ -88,9 +90,6 @@ const BannerTab = ({ tab1, setTab1, tab2, setTab2, tab3, setTab3 }) => {
         >
           <div className="min-w-[24px] min-h-[24px]">{iRefresh}</div>
         </Button>
-        {/* <h1 className="text-white text-[23px] leading-[39px] font-bakbak-one md:hidden font-normal">
-          Wallpapers
-        </h1> */}
       </div>
     </div>
   );
