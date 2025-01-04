@@ -10,6 +10,7 @@ import {
   useUpdateWallpapersMutation,
 } from "../../redux/features/wallpapers/wallpapersApi";
 import { SpinnerCircularFixed } from "spinners-react";
+import { handlePastTags } from "@/lib/services/service";
 
 const DraftPublishSidebarUi = ({
   setOpen,
@@ -279,6 +280,7 @@ const DraftPublishSidebarUi = ({
               <input
                 type="text"
                 name="tag"
+                onPaste={(e) => handlePastTags(e, tags, setTags)}
                 placeholder="Add tags here..."
                 className="placeholder:text-[#5C5C5C] text-[12px] font-lato placeholder:text-[12px] placeholder:font-lato text-[#fff] px-2 w-full h-full outline-none bg-transparent flex-grow"
               />

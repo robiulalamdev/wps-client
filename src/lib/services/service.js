@@ -271,3 +271,19 @@ export const handleWallpaperUploadWithProgress = async (
   await Promise.all(uploadPromises);
   return { success: true, results: allResults };
 };
+
+export const handlePastTags = (e, tags = [], setTags) => {
+  e.preventDefault();
+
+  // Split the input string into tags by commas
+  const pastedText = e.clipboardData.getData("Text");
+
+  // Split the pasted text by commas, trim extra spaces, and filter out empty entries
+  const newTags = pastedText
+    .split(",")
+    .map((tag) => tag.trim()) // Trim each tag
+    .filter((tag) => tag); // Remove empty entries
+
+  setTags([...tags, ...newTags]);
+  e.target.value = ""; // Clear the input field
+};

@@ -12,6 +12,7 @@ import {
 } from "../../../redux/features/wallpapers/wallpapersApi";
 import { toast } from "react-toastify";
 import { SpinnerCircularFixed } from "spinners-react";
+import { handlePastTags } from "@/lib/services/service";
 
 const MediaInfoPopup = ({ wallpaperInfo, setWallpaperInfo }) => {
   const { formatFileSize } = useViewImage();
@@ -199,6 +200,7 @@ const MediaInfoPopup = ({ wallpaperInfo, setWallpaperInfo }) => {
                   <input
                     type="text"
                     name="tag"
+                    onPaste={(e) => handlePastTags(e, tags, setTags)}
                     placeholder="Add tags here..."
                     className="placeholder:text-white text-[12px] font-lato placeholder:text-[12px] placeholder:font-lato text-white px-2 w-full h-full outline-none bg-transparent flex-grow"
                   />
