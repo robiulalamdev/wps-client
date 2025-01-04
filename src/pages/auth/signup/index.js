@@ -202,21 +202,7 @@ const Signup = () => {
               <input
                 {...register("password", {
                   required: "Password is required",
-                  pattern: {
-                    value: /^(?!\s)(?!.*\s{2})(?=.*[a-zA-Z0-9]).{6,12}$/, // Requires 6 to 12 characters with no spaces
-                    message:
-                      "Password must be 6 to 12 characters long with no spaces",
-                  },
-                  validate: {
-                    complexPassword: (value) => {
-                      const regex =
-                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,12}$/;
-                      return (
-                        regex.test(value) ||
-                        "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character"
-                      );
-                    },
-                  },
+                  ...FIELD_VALIDATIONS.PASSWORD_VALIDATION,
                 })}
                 type="password"
                 placeholder="*****************"

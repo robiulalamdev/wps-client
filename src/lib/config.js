@@ -59,6 +59,21 @@ export const FIELD_VALIDATIONS = {
       message: "Username cannot exceed 15 characters",
     },
   },
+  PASSWORD_VALIDATION: {
+    minLength: {
+      value: 6,
+      message: "Password must be at least 6 characters long",
+    },
+    maxLength: {
+      value: 20,
+      message: "Password cannot exceed 20 characters",
+    },
+    pattern: {
+      value: /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,20}$/,
+      message:
+        "Password must contain at least one uppercase letter, one number, and one special character",
+    },
+  },
 };
 
 export const handleKeyboardShortcuts = (event, router) => {

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useUpdateCredentialsTabInfoMutation } from "../../redux/features/users/usersApi";
 import { SpinnerCircularFixed } from "spinners-react";
 import { toast } from "react-toastify";
+import { FIELD_VALIDATIONS } from "@/lib/config";
 
 const AccountSettingCredentialTab = () => {
   const { user } = useContext(AuthContext);
@@ -93,20 +94,7 @@ const AccountSettingCredentialTab = () => {
           <input
             {...register("new_password", {
               required: false,
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters long",
-              },
-              maxLength: {
-                value: 12,
-                message: "Password must be no more than 12 characters long",
-              },
-              pattern: {
-                value:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{6,12}$/,
-                message:
-                  "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character, with no spaces",
-              },
+              ...FIELD_VALIDATIONS.PASSWORD_VALIDATION,
             })}
             type="password"
             placeholder="New Password"
