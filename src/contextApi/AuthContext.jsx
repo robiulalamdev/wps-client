@@ -1,16 +1,22 @@
 /* eslint-disable react/prop-types */
 
 import { createContext, useEffect, useMemo, useState } from "react";
-import { DELETE_TOKEN, TOKEN_NAME } from "../lib/config";
+import {
+  DELETE_TOKEN,
+  handleKeyboardShortcuts,
+  TOKEN_NAME,
+} from "../lib/config";
 import { useGetUserQuery } from "../redux/features/users/usersApi";
 import { useTrackingVisitorMutation } from "../redux/features/analytics/analyticsApi";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const { data, refetch, isLoading } = useGetUserQuery();
   const [trackingVisitor] = useTrackingVisitorMutation();
+  const router = useRouter();
 
   const [user, setUser] = useState(null);
 
@@ -66,6 +72,14 @@ export function AuthProvider({ children }) {
     handleTrackingAction();
     return () => {
       return;
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyPress = (event) => handleKeyboardShortcuts(event, router);
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
 

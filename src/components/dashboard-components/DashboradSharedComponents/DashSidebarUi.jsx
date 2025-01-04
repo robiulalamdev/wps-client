@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react";
+import { Button, IconButton, Tooltip } from "@material-tailwind/react";
 import { sidebarBottomItems, sidebarItems } from "../../../utils/data/global";
 import {
   iDashLogout,
@@ -13,6 +13,7 @@ import { ROLE_DATA } from "../../../lib/config";
 import useViewImage from "../../../lib/hooks/useViewImage";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { IHome } from "@/utils/icons/icons";
 
 const DashSidebarUi = () => {
   const { user, logout } = useContext(AuthContext);
@@ -27,11 +28,32 @@ const DashSidebarUi = () => {
       <div className="max-w-[285px] min-w-[285px] h-full bg-dash-cm-bg rounded-[10px] pb-[19px] relative">
         <div className="flex flex-col justify-between w-full h-full pl-[20px] pr-[13px] overflow-y-auto">
           <div className="h-fit">
-            <div className="flex justify-center items-center gap-x-[8px] mt-[22px]">
-              <h1 className="font-bakbak-one font-normal text-white text-[15px] tracking-[0] leading-[normal]">
-                WPS / TASE
-              </h1>
-              <div>{sideLogoCircle}</div>
+            <div className="flex items-center gap-x-[31px] mt-[22px]">
+              <Tooltip
+                content={
+                  <div>
+                    <small className="text-[12px] text-center font-normal font-bakbak-one block">
+                      CTRL + H
+                    </small>{" "}
+                    <small className="text-[10px] text-center">
+                      open to Home
+                    </small>
+                  </div>
+                }
+              >
+                <IconButton
+                  onClick={() => router.push("/")}
+                  className="w-[26px] h-[26px] bg-transparent hover:bg-[#262626] text-white rounded-[5px] p-0"
+                >
+                  {IHome}
+                </IconButton>
+              </Tooltip>
+              <div className="flex justify-center items-center gap-x-[8px]">
+                <h1 className="font-bakbak-one font-normal text-white text-[15px] tracking-[0] leading-[normal]">
+                  WPS / TASE
+                </h1>
+                <div>{sideLogoCircle}</div>
+              </div>
             </div>
             <div className="mt-[55px]">
               <h1 className="font-lato font-extrabold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">

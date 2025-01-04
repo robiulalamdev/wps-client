@@ -4,6 +4,7 @@ import {
   SpeedDial,
   SpeedDialContent,
   SpeedDialHandler,
+  Tooltip,
 } from "@material-tailwind/react";
 
 import {
@@ -30,12 +31,25 @@ const HeaderProfile = () => {
   return (
     <div className="flex items-center gap-x-[11px]">
       {(user?.role === ROLE_DATA.ADMIN || user?.role === ROLE_DATA.MOD) && (
-        <IconButton
-          onClick={() => router.push("/dashboard")}
-          className="w-[37px] h-[34px] p-0 bg-[#00000033] text-white hover:text-[#FF001F]"
+        <Tooltip
+          content={
+            <div>
+              <small className="text-[12px] text-center font-normal font-bakbak-one block">
+                CTRL + D
+              </small>{" "}
+              <small className="text-[10px] text-center">
+                open to Dashboard
+              </small>
+            </div>
+          }
         >
-          {IGoToDashboard}
-        </IconButton>
+          <IconButton
+            onClick={() => router.push("/dashboard")}
+            className="w-[37px] h-[34px] p-0 bg-[#00000033] text-white hover:text-[#FF001F] rounded-[5px]"
+          >
+            {IGoToDashboard}
+          </IconButton>
+        </Tooltip>
       )}
 
       <div onMouseLeave={() => setOpen(false)}>
