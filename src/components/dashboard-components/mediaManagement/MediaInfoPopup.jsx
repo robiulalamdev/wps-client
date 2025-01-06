@@ -200,7 +200,7 @@ const MediaInfoPopup = ({ wallpaperInfo, setWallpaperInfo }) => {
                   <input
                     type="text"
                     name="tag"
-                    onPaste={(e) => handlePastTags(e, tags, setTags)}
+                    onPaste={(e) => {handlePastTags(e, tags, setTags)}}
                     placeholder="Add tags here..."
                     className="placeholder:text-white text-[12px] font-lato placeholder:text-[12px] placeholder:font-lato text-white px-2 w-full h-full outline-none bg-transparent flex-grow"
                   />
