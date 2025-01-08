@@ -32,12 +32,12 @@ const DashSidebarUi = () => {
               <Tooltip
                 content={
                   <div>
-                    <small className="text-[12px] text-center font-normal font-bakbak-one block">
+                    <small className="text-[10px] text-center font-lato font-bold block">
                       CTRL + H
                     </small>{" "}
-                    <small className="text-[10px] text-center">
+                    {/* <small className="text-[10px] text-center">
                       open to Home
-                    </small>
+                    </small> */}
                   </div>
                 }
               >

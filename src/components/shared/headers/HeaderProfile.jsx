@@ -34,12 +34,12 @@ const HeaderProfile = () => {
         <Tooltip
           content={
             <div>
-              <small className="text-[12px] text-center font-normal font-bakbak-one block">
+              <small className="text-[10px] text-center font-lato font-bold block">
                 CTRL + D
               </small>{" "}
-              <small className="text-[10px] text-center">
+              {/* <small className="text-[10px] text-center">
                 open to Dashboard
-              </small>
+              </small> */}
             </div>
           }
         >
