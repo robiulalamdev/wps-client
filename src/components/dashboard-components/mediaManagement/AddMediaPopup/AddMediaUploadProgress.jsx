@@ -9,7 +9,7 @@ import { useGetMyDraftWallpapersQuery } from "../../../../redux/features/wallpap
 
 // eslint-disable-next-line no-unused-vars
 const AddMediaUploadProgress = ({ upload, setUpload, files, setFiles }) => {
-  const { refetch } = useGetMyDraftWallpapersQuery(`?page=${1}&limit=${0}`);
+  const { refetch } = useGetMyDraftWallpapersQuery(`?page=${1}&limit=${30}`);
   const handleClose = (index) => {
     let data = [...files];
     data.splice(index, 1);

@@ -28,7 +28,7 @@ const UploadProggressArea = ({
   const [uploadLoading, setUploadLoading] = useState(false);
   const [settingsChange] = useSettingsChangeMutation();
 
-  const { refetch } = useGetMyDraftWallpapersQuery(`?page=${1}&limit=${0}`);
+  const { refetch } = useGetMyDraftWallpapersQuery(`?page=${1}&limit=${30}`);
 
   const router = useRouter();
 
