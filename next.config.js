@@ -7,6 +7,7 @@ const withPWA = require("next-pwa")({
   register: true,
   skipWaiting: true,
 });
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -15,6 +16,9 @@ const nextConfig = {
         hostname: "api.thewallpapersociety.com",
       },
     ],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
   },
   swcMinify: true,
   output: "standalone",

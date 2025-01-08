@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useMemo(() => {
-    if (data?.success) {
+    if (data?.success && data?.data?._id) {
       setUser(data?.data);
     }
   }, [data]);
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
       const vTrackDate = new Date(parseInt(vTrack, 10));
 
       if (vTrackDate >= startDate && vTrackDate < endDate) {
-        console.log("Already tracked for today");
+        // console.log("Already tracked for today");
         return;
       }
     }
@@ -76,12 +76,13 @@ export function AuthProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const handleKeyPress = (event) => handleKeyboardShortcuts(event, router);
+    const handleKeyPress = (event) =>
+      handleKeyboardShortcuts(event, router, user);
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
+  }, [router, user]);
 
   const contextValue = {
     user,
