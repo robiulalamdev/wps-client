@@ -25,14 +25,21 @@ const BannerTab = ({ tab1, setTab1, tab2, setTab2, tab3, setTab3 }) => {
             <Button
               onClick={() => setTab1(t)}
               key={i}
-              className={`hover:shadow-none shadow-none p-0 m-0 normal-case font-lato text-[12px] leading-[14.4px] font-bold w-fit h-[30px] md:w-fit md:h-[33px] min-w-[80px] 
-                px-[10px] md:px-[16px]  ${
-                  tab1 === t
-                    ? "!bg-[#000000B2] !text-white rounded-[100px] md:rounded-[23.5px]"
-                    : "bg-transparent !text-[#C6C6C6]"
-                }`}
+              className={`hover:shadow-none shadow-none p-0 m-0 normal-case font-lato text-[12px] leading-[14.4px] font-bold w-fit h-[30px] md:w-fit md:h-[33px] min-w-[60px] 
+      px-[10px] md:px-[16px]  ${
+        tab1 === t
+          ? "!bg-[#000000B2] !text-white rounded-[100px] md:rounded-[23.5px]"
+          : "bg-transparent !text-[#C6C6C6]"
+      }`}
             >
-              {t}
+              <span className={`${i === 2 ? "hidden md:inline-block" : ""}`}>
+                {t}
+              </span>
+              <span
+                className={`${i === 2 ? "inline-block md:hidden" : "hidden"}`}
+              >
+                {i === 2 ? "Top" : t}
+              </span>
             </Button>
           ))}
         </div>
