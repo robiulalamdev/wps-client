@@ -104,7 +104,10 @@ const SearchWallpapers = () => {
     if (type && types.includes(type.toLowerCase())) {
       setTab2(type);
     }
-    if (tn && ["trending", "new"].includes(tn.toLowerCase())) {
+    if (
+      tn &&
+      ["trending", "new", "top wallpapers"].includes(tn.toLowerCase())
+    ) {
       setTab1(tn);
     }
     if (

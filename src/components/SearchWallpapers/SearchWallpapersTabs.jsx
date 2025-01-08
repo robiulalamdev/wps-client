@@ -21,8 +21,9 @@ import filter from "../../assets/icons/search-wallpapers/filter.gif";
 import { resolutions } from "../../utils/data/data";
 import SearchWallpapersDrawer from "./SearchWallpapersDrawer";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
-const tabs1 = ["Trending", "New"];
+const tabs1 = ["Trending", "New", "Top Wallpapers"];
 const tabs2 = ["All", "Illustration", "Photography", "AI"];
 const tabs3 = ["SFW", "NSFW"];
 
@@ -41,26 +42,36 @@ const SearchWallpapersTabs = ({ tab1, tab2, tab3, handleQuery }) => {
     <>
       <div className="mt-[21px] md:mt-[39px] mb-[26px] md:mb-0 max-w-full overflow-x-auto">
         <div className="flex items-center justify-start lg:justify-center gap-x-[20px]">
-          <div className="bg-[#00000033] rounded-[100px] md:rounded-[23.5px] w-[177px] h-[40px] md:w-[192px] md:h-[42px] flex justify-center items-center">
+          <div className="!bg-[#00000033] rounded-[100px] md:rounded-[23.5px] min-w-fit h-[40px] md:w-fit md:h-[42px] flex justify-center items-center gap-x-[10px] md:gap-x-[16px] px-[6px]">
             {tabs1.map((t, i) => (
               <Button
                 onClick={() => handleQuery("tn", t)}
                 key={i}
-                className={`hover:shadow-none shadow-none p-0 m-0 normal-case font-lato text-[12px] leading-[14.4px] font-bold w-[82px] h-[30px] md:min-w-[88px] md:h-[33px]  ${
-                  tab1.toLowerCase() === t.toLowerCase()
-                    ? "bg-[#000000B2] !text-white rounded-[100px] md:rounded-[23.5px]"
+                className={`hover:shadow-none shadow-none p-0 m-0 normal-case font-lato text-[12px] leading-[14.4px] font-bold w-fit h-[30px] md:w-fit md:h-[33px] min-w-[60px] 
+                px-[10px] md:px-[16px]  ${
+                  tab1 === t
+                    ? "!bg-[#000000B2] !text-white rounded-[100px] md:rounded-[23.5px]"
                     : "bg-transparent !text-[#C6C6C6]"
                 }`}
               >
-                {t}
+                <span className={`${i === 2 ? "hidden md:inline-block" : ""}`}>
+                  {t}
+                </span>
+                <span
+                  className={`${i === 2 ? "inline-block md:hidden" : "hidden"}`}
+                >
+                  {i === 2 ? "Top" : t}
+                </span>
               </Button>
             ))}
           </div>
 
-          <img
+          <Image
             onClick={() => setOpen(!open)}
             src={filter.src}
             alt=""
+            width={57}
+            height={39}
             className="w-[57px] h-[39px] lg:hidden"
           />
 
