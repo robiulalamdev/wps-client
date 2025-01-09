@@ -1,4 +1,5 @@
 import nookies from "nookies";
+import { SOCIAL_ICONS, socialLinkItems } from "./data/globalData";
 
 export const NODE_ENV = process.env.NODE_ENV;
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -11,7 +12,47 @@ export const SOCIAL_LINKS = {
   DISCORD: "https://discord.gg/BkTyxthkr6",
   INSTAGRAM: "https://www.instagram.com/wallpsociety",
   REDDIT: "https://www.reddit.com/r/WallpaperSociety",
+  THREADS: "",
 };
+
+export const SOCIALS_LINKS = [
+  {
+    id: 1,
+    name: "twitter",
+    image: SOCIAL_ICONS.twitter.icon,
+    link: SOCIAL_LINKS.TWITTER,
+  },
+  {
+    id: 2,
+    name: "discord",
+    image: SOCIAL_ICONS.discord.icon,
+    link: SOCIAL_LINKS.DISCORD,
+  },
+  {
+    id: 3,
+    name: "instagram",
+    image: SOCIAL_ICONS.instagram.icon,
+    link: SOCIAL_LINKS.INSTAGRAM,
+  },
+  {
+    id: 4,
+    name: "tiktok",
+    image: SOCIAL_ICONS.tiktok.icon,
+    link: SOCIAL_LINKS.TIKTOK,
+  },
+  {
+    id: 5,
+    name: "threads",
+    image: SOCIAL_ICONS.threads.icon,
+    link: SOCIAL_LINKS.THREADS,
+  },
+  {
+    id: 6,
+    name: "reddit",
+    image: SOCIAL_ICONS.reddit.icon,
+    link: SOCIAL_LINKS.REDDIT,
+  },
+];
 
 export const ACCEPT_FILES = {
   PROOF_OF_IDENTITY: ".png, .jpg, .jpeg, .doc, .pdf",

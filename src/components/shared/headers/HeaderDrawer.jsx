@@ -11,10 +11,10 @@ import {
 import profile from "../../../assets/images/global/header/profile.png";
 import { AuthContext } from "../../../contextApi/AuthContext";
 import useViewImage from "../../../lib/hooks/useViewImage";
-import { socialLinkItems } from "../../../lib/data/globalData";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import { SOCIALS_LINKS } from "@/lib/config";
 
 const HeaderDrawer = ({ open, close }) => {
   const { viewResizeImg } = useViewImage();
@@ -27,18 +27,20 @@ const HeaderDrawer = ({ open, close }) => {
       open={open}
       onClose={closeDrawer}
       size={719}
-      className="bg-black p-0 m-0 w-full"
+      className="bg-black p-0 m-0 w-full lg:hidden"
     >
       <div className="flex flex-col justify-between w-full h-full pt-[29px] px-[23px]">
         <div className=" h-fit">
           <div className="flex justify-between items-start h-fit">
             {user?._id ? (
-              <img
+              <Image
                 src={
                   viewResizeImg(user?.profile?.profile_image, 55, 55) ||
                   profile.src
                 }
                 alt="profile"
+                width={50}
+                height={50}
                 className="!w-[50px] h-[50px] rounded-full ml-[28px]"
               />
             ) : (
@@ -134,7 +136,7 @@ const HeaderDrawer = ({ open, close }) => {
           )}
         </div>
 
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {user && user?._id && (
             <>
               <div
@@ -145,33 +147,23 @@ const HeaderDrawer = ({ open, close }) => {
                 <p>Log Out</p>
               </div>
               <div className="border-t-[1px] border-[#5A5A5A] p-0 m-0"></div>
-              <div className="flex justify-center items-center gap-x-[6vw] mt-[26px] pb-[29px] px-[29px]">
-                {Object.entries(socialLinkItems)?.map((item, index) => (
-                  <>
-                    {user?.profile?.socials[item[0]] && (
-                      <Link
-                        key={index}
-                        target="_blank"
-                        href={user?.profile?.socials[item[0]]}
-                        className="cursor-pointer"
-                      >
-                        <Image
-                          src={item[1].icon.src}
-                          alt="icon"
-                          width={25}
-                          height={25}
-                          className="max-w-[15px] md:max-w-[25px] object-contain"
-                        />
-                      </Link>
-                    )}
-                  </>
+              <div className="flex justify-center items-center gap-x-[8vw] mt-[26px] pb-[29px] px-[29px]">
+                {SOCIALS_LINKS.map((item, i) => (
+                  <Link
+                    key={i}
+                    target="_blank"
+                    href={item.link}
+                    className="cursor-pointer"
+                  >
+                    <Image
+                      src={item.image}
+                      alt="icon"
+                      width={25}
+                      height={25}
+                      className="max-w-[15px] md:max-w-[25px] object-contain"
+                    />
+                  </Link>
                 ))}
-                {/* <img src={icon1} alt="icon" className="size-[17px]" />
-            <img src={icon2} alt="icon" className="size-[17px]" />
-            <img src={icon3} alt="icon" className="size-[17px]" />
-            <img src={icon4} alt="icon" className="size-[17px]" />
-            <img src={icon5} alt="icon" className="size-[17px]" />
-            <img src={icon6} alt="icon" className="size-[17px]" /> */}
               </div>
             </>
           )}

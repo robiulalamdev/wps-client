@@ -28,7 +28,7 @@ const UserProfileInformationTab = ({ user, setUser }) => {
       dribbble: user?.profile?.socials?.dribbble || "",
       instagram: user?.profile?.socials?.instagram || "",
       discord: user?.profile?.socials?.discord || "",
-      deviantart: user?.profile?.socials?.deviantart || "",
+      threads: user?.profile?.socials?.threads || "",
       reddit: user?.profile?.socials?.reddit || "",
       twitch: user?.profile?.socials?.twitch || "",
     };
