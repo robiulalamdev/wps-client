@@ -146,27 +146,27 @@ const HeaderDrawer = ({ open, close }) => {
                 {iLogout}
                 <p>Log Out</p>
               </div>
-              <div className="border-t-[1px] border-[#5A5A5A] p-0 m-0"></div>
-              <div className="flex justify-center items-center gap-x-[8vw] mt-[26px] pb-[29px] px-[29px]">
-                {SOCIALS_LINKS.map((item, i) => (
-                  <Link
-                    key={i}
-                    target="_blank"
-                    href={item.link}
-                    className="cursor-pointer"
-                  >
-                    <Image
-                      src={item.image}
-                      alt="icon"
-                      width={25}
-                      height={25}
-                      className="max-w-[15px] md:max-w-[25px] object-contain"
-                    />
-                  </Link>
-                ))}
-              </div>
             </>
           )}
+          <div className="border-t-[1px] border-[#5A5A5A] p-0 m-0"></div>
+          <div className="flex justify-center items-center gap-x-[8vw] mt-[26px] pb-[29px] px-[29px]">
+            {SOCIALS_LINKS.map((item, i) => (
+              <Link
+                key={i}
+                target="_blank"
+                href={item.link}
+                className="cursor-pointer"
+              >
+                <Image
+                  src={item.image}
+                  alt="icon"
+                  width={25}
+                  height={25}
+                  className="max-w-[15px] md:max-w-[25px] object-contain"
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </Drawer>
