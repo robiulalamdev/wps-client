@@ -32,7 +32,7 @@ const Banner = () => {
   const detectDevice = () => {
     const isPhone = window.innerWidth <= 768;
     if (isPhone) {
-      setTab3("Phones");
+      setTab3("Mobile");
     } else {
       setTab3("Desktop");
     }

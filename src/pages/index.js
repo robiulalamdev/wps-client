@@ -20,8 +20,8 @@ export default function Home() {
         image={viewResizeImg("src/assets/images/card.jpg", 600, 600)}
         url={CLIENT_URL}
         // username=""
-        width={200}
-        height={200}
+        width={400}
+        height={400}
       />
       <MainHeader />
       <Banner />
