@@ -95,6 +95,11 @@ export const FIELD_VALIDATIONS = {
       value: /^[^\s]+$/,
       message: "Username cannot contain spaces or multiple words",
     },
+    // pattern: {
+    //   value: /^[a-z]+$/,
+    //   message:
+    //     "Username must be lowercase and cannot contain spaces or multiple words",
+    // },
     maxLength: {
       value: 15,
       message: "Username cannot exceed 15 characters",
