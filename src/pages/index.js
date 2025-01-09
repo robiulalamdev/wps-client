@@ -17,11 +17,11 @@ export default function Home() {
       <MetaTags
         title="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
         description="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society. Explore this stunning Neon Retro wallpaper featuring vibrant purple ferns. Perfect for a high-definition setup!"
-        image={viewResizeImg("src/assets/images/card.jpg", 600, 600)}
+        image={viewResizeImg("src/assets/images/card.jpg", 400, 400)}
         url={CLIENT_URL}
         // username=""
-        width={400}
-        height={400}
+        width={200}
+        height={200}
       />
       <MainHeader />
       <Banner />
