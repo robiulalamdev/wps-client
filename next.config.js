@@ -15,6 +15,9 @@ const nextConfig = {
       {
         hostname: "api.thewallpapersociety.com",
       },
+      {
+        hostname: "localhost",
+      },
     ],
   },
   compiler: {

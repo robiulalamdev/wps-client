@@ -12,6 +12,7 @@ import useViewImage from "../../lib/hooks/useViewImage";
 import DashboardPrivateRoute from "@/middlewares/DashboardPrivateRoute";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { ROLE_DATA } from "@/lib/config";
+import Image from "next/image";
 
 const tabs = [
   "Today",
@@ -99,28 +100,34 @@ const Dashboard = () => {
         </div>
 
         {/* h-[25.5vh] max-h-fit */}
-        <div className="min-h-[215px] flex-grow bg-dash-cm-bg rounded-[10px] w-full gap-[14px] mt-[19px] pb-[8px]">
-          <h1 className="text-white font-lato font-medium text-[15px] pt-[19px] text-center">
-            Sponsor Click-Through Links
-          </h1>
-          <div className="flex justify-center items-center flex-wrap 2xl:flex-nowrap gap-x-[35px] 2xl:gap-x-[60px] gap-y-[30px] mt-[40px]">
-            {data?.data?.sponsors?.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col justify-center items-center gap-[14px]"
-              >
-                <img
-                  src={viewResizeImg(item?.banner)}
-                  alt=""
-                  className="size-[70px] rounded-[5px] object-cover"
-                />
-                <h1 className="text-white font-lato text-[15px] font-bold">
-                  {item?.totalClicks}
-                </h1>
-              </div>
-            ))}
+        {data?.data?.sponsors?.length > 0 ? (
+          <div className="min-h-[215px] flex-grow bg-dash-cm-bg rounded-[10px] w-full gap-[14px] mt-[19px] pb-[8px]">
+            <h1 className="text-white font-lato font-medium text-[15px] pt-[19px] text-center">
+              Sponsor Click-Through Links
+            </h1>
+            <div className="flex justify-center items-center flex-wrap 2xl:flex-nowrap gap-x-[35px] 2xl:gap-x-[60px] gap-y-[30px] mt-[40px]">
+              {data?.data?.sponsors?.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col justify-center items-center gap-[14px]"
+                >
+                  <Image
+                    src={viewResizeImg(item?.banner)}
+                    alt=""
+                    width={70}
+                    height={70}
+                    className="size-[70px] rounded-[5px] object-cover"
+                  />
+                  <h1 className="text-white font-lato text-[15px] font-bold">
+                    {item?.totalClicks}
+                  </h1>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="min-h-[215px] flex-grow bg-transparent rounded-[10px] w-full gap-[14px] mt-[19px] pb-[8px]"></div>
+        )}
       </div>
       <div className="max-w-[425px] min-w-[300px] w-full overflow-y-auto flex flex-col justify-between">
         <MostFavorited />
