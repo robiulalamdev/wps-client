@@ -5,7 +5,7 @@ import {
   iDashCopySponsorInfo,
   idashClose,
 } from "../../../utils/icons/dashboard-icons/dashicons";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import LazyWallpaper from "../../common/wallpaper/LazyWallpaper";
 import { useGetUserInfoBySlugMutation } from "../../../redux/features/users/usersApi";
 import useInputPattern from "../../../lib/hooks/useInputPattern";
@@ -69,7 +69,7 @@ const FeaturedBrandSearchModal = ({
       }
     }
 
-    if (items.length > 0) {
+    if (Array.isArray(items)) {
       const result = await handleAdd(items, "Brand");
       if (result?.data?.success) {
         toast.success("Featured added successfully");
@@ -123,7 +123,8 @@ const FeaturedBrandSearchModal = ({
   const handleKeyPress = async (e, item = null, index) => {
     const stored = [...storedItems];
     stored[item.no - 1]["load"] = true;
-    if (e.key === "Enter" && e.target.value) {
+    // if (e.key === "Enter" && e.target.value) {
+    if (e.target.value) {
       if (e.target.value.replaceAll(`${CLIENT_URL}/profiles/`, "")) {
         const options = {
           slug: e.target.value.replaceAll(`${CLIENT_URL}/profiles/`, ""),
@@ -212,6 +213,18 @@ const FeaturedBrandSearchModal = ({
   };
   const debouncedSetTitle = debounce(handleSetTitle, 1200);
 
+  const typingTimeouts = useRef({});
+
+  const handleInputChange = (e, item, index) => {
+    if (typingTimeouts.current[index]) {
+      clearTimeout(typingTimeouts.current[index]);
+    }
+
+    typingTimeouts.current[index] = setTimeout(() => {
+      handleKeyPress(e, item, index);
+    }, 1500); // Delay of 1500ms (1.5 seconds); adjust as needed
+  };
+
   return (
     <Dialog
       open={open}
@@ -259,6 +272,8 @@ const FeaturedBrandSearchModal = ({
                   <div>{iDashCopySponsorInfo}</div>
                   <input
                     onKeyPress={(e) => handleKeyPress(e, item, index)}
+                    onBlur={(e) => handleKeyPress(e, item, index)}
+                    onChange={(e) => handleInputChange(e, item, index)}
                     type="url"
                     defaultValue={
                       item?._id ? `${CLIENT_URL}/profiles/${item?.slug}` : ""
@@ -277,8 +292,8 @@ const FeaturedBrandSearchModal = ({
         <Button
           disabled={isLoading}
           onClick={() => handleAddFeatured()}
-          className={`w-[129px] h-[38px] rounded-[5px] ${
-            selectedItems?.length > 0 ? "bg-[#2824ff]" : "bg-[#2924FF33]"
+          className={`w-[129px] h-[38px] rounded-[5px] !bg-[#2824ff] ${
+            selectedItems?.length > 0 ? "bg-[#2824ff]D" : "bg-[#2924FF33]D"
           } shadow-none hover:shadow-none block mx-auto mt-[57px] p-0 text-[15px] text-[#C4C4C4] font-bakbak-one leading-normal normal-case font-normal flex justify-center items-center`}
         >
           {" "}

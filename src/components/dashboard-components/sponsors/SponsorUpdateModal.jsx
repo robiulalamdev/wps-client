@@ -117,7 +117,6 @@ const SponsorUpdateModal = ({
   }, [items, open]);
 
   const handleKeyPress = async (e, item = null, index) => {
-    console.log("call: ");
     const stored = [...storedItems];
     stored[item.no - 1]["load"] = true;
     // if (e.key === "Enter" && e.target.value) {
@@ -188,7 +187,7 @@ const SponsorUpdateModal = ({
 
     typingTimeouts.current[index] = setTimeout(() => {
       handleKeyPress(e, item, index);
-    }, 3000); // Delay of 3000ms (3 seconds); adjust as needed
+    }, 1500); // Delay of 1500ms (1.5 seconds); adjust as needed
   };
 
   return (
@@ -288,6 +287,8 @@ const SponsorUpdateModal = ({
                       <div>{iDashCopySponsorInfo}</div>
                       <input
                         onKeyPress={(e) => handleKeyPress(e, item, index)}
+                        onBlur={(e) => handleKeyPress(e, item, index)}
+                        onChange={(e) => handleInputChange(e, item, index)}
                         type="url"
                         defaultValue={
                           item?._id

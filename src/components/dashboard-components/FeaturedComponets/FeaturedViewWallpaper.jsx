@@ -9,12 +9,12 @@ const FeaturedViewWallpaper = ({
   selectedItems = [],
   handleSelect,
 }) => {
-  const isExist = selectedItems.some(
-    (item) => item?._id === data?._id && item.no === data?.no
-  );
+  // const isExist = selectedItems.some(
+  //   (item) => item?._id === data?._id && item.no === data?.no
+  // );
   return (
     <div
-      onClick={() => handleSelect(data)}
+      // onClick={() => handleSelect(data)}
       className={`max-w-[217px] w-full h-[109px] rounded-[5px] overflow-hidden relative`}
     >
       {data?.wallpaper ? (
@@ -33,13 +33,13 @@ const FeaturedViewWallpaper = ({
         </div>
       )}
 
-      {!isExist && (
+      {/* {!isExist && (
         <div className="w-full h-full !bg-black !bg-opacity-80 rounded-[10px] !absolute top-0 left-0 cursor-pointer">
           <img src={overlay.src} alt="" className="w-full h-full" />
         </div>
-      )}
+      )} */}
 
-      {data?.load && (
+      {/* {data?.load && (
         <div className="w-full h-full !bg-[#403e3efd] rounded-[10px] !absolute top-0 left-0 cursor-pointer z-50">
           <div
             className={`w-full h-full flex items-center justify-center bg-[#00000033] skeleton-loader`}
@@ -55,7 +55,7 @@ const FeaturedViewWallpaper = ({
             </svg>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

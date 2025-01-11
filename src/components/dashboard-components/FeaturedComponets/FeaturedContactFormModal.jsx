@@ -4,7 +4,7 @@ import {
   iDashCopySponsorInfo,
   idashClose,
 } from "../../../utils/icons/dashboard-icons/dashicons";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import FeaturedViewWallpaper from "./FeaturedViewWallpaper";
 import { handleItemSelection } from "../../../lib/services/service";
 import { CLIENT_URL } from "../../../lib/config";
@@ -49,6 +49,25 @@ const FeaturedContactFormModal = ({
     } else {
       toast.error("Featured added unSuccessfully");
     }
+  };
+
+  const handleAction = async () => {
+    const items = [];
+    for (let i = 0; i < storedItems.length; i++) {
+      const element = storedItems[i];
+
+      if (element?._id && element?.slug) {
+        const newData = {
+          targetId: element?.targetId || "",
+          slug: element.slug || "",
+          wallpaper: element.wallpaper || "",
+          serialNo: element.serialNo || 0,
+        };
+        items.push(newData);
+      }
+    }
+
+    setSelectedItems(items);
   };
 
   useMemo(() => {
@@ -98,7 +117,8 @@ const FeaturedContactFormModal = ({
   const handleKeyPress = async (e, item = null, index) => {
     const stored = [...storedItems];
     stored[item.no - 1]["load"] = true;
-    if (e.key === "Enter" && e.target.value) {
+    // if (e.key === "Enter" && e.target.value) {
+    if (e.target.value) {
       if (e.target.value.replaceAll(`${CLIENT_URL}/w/`, "")) {
         const options = {
           data: {},
@@ -147,6 +167,24 @@ const FeaturedContactFormModal = ({
     setStoredItems(stored);
   };
 
+  useMemo(() => {
+    if (storedItems?.length > 0) {
+      handleAction();
+    }
+  }, [storedItems]);
+
+  const typingTimeouts = useRef({});
+
+  const handleInputChange = (e, item, index) => {
+    if (typingTimeouts.current[index]) {
+      clearTimeout(typingTimeouts.current[index]);
+    }
+
+    typingTimeouts.current[index] = setTimeout(() => {
+      handleKeyPress(e, item, index);
+    }, 1500); // Delay of 1500ms (1.5 seconds); adjust as needed
+  };
+
   return (
     <Dialog
       open={open}
@@ -170,6 +208,8 @@ const FeaturedContactFormModal = ({
                   <div>{iDashCopySponsorInfo}</div>
                   <input
                     onKeyPress={(e) => handleKeyPress(e, item, index)}
+                    onBlur={(e) => handleKeyPress(e, item, index)}
+                    onChange={(e) => handleInputChange(e, item, index)}
                     type="url"
                     defaultValue={
                       item?._id ? `${CLIENT_URL}/w/${item?.slug}` : ""
@@ -188,8 +228,8 @@ const FeaturedContactFormModal = ({
         <Button
           disabled={isLoading}
           onClick={() => handleAddFeatured()}
-          className={`w-[129px] h-[38px] rounded-[5px] ${
-            selectedItems?.length > 0 ? "bg-[#2824ff]" : "bg-[#2924FF33]"
+          className={`w-[129px] h-[38px] rounded-[5px] !bg-[#2824ff] ${
+            selectedItems?.length > 0 ? "bg-[#2824ff]D" : "bg-[#2924FF33]D"
           } shadow-none hover:shadow-none block mx-auto mt-[57px] p-0 text-[15px] text-[#C4C4C4] font-bakbak-one leading-normal normal-case font-normal flex justify-center items-center`}
         >
           {" "}

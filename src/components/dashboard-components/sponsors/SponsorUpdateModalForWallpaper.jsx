@@ -5,7 +5,7 @@ import {
   idashClose,
 } from "../../../utils/icons/dashboard-icons/dashicons";
 import LazyWallpaper from "../../common/wallpaper/LazyWallpaper";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { CLIENT_URL } from "../../../lib/config";
 import useInputPattern from "../../../lib/hooks/useInputPattern";
 import { handleItemSelection } from "../../../lib/services/service";
@@ -127,7 +127,8 @@ const SponsorUpdateModalForWallpaper = ({
   const handleKeyPress = async (e, item = null, index) => {
     const stored = [...storedItems];
     stored[item.no - 1]["load"] = true;
-    if (e.key === "Enter" && e.target.value) {
+    // if (e.key === "Enter" && e.target.value) {
+    if (e.target.value) {
       if (e.target.value.replaceAll(`${CLIENT_URL}/w/`, "")) {
         const options = {
           slug: e.target.value.replaceAll(`${CLIENT_URL}/w/`, ""),
@@ -185,6 +186,18 @@ const SponsorUpdateModalForWallpaper = ({
 
   // console.log(storedItems);
 
+  const typingTimeouts = useRef({});
+
+  const handleInputChange = (e, item, index) => {
+    if (typingTimeouts.current[index]) {
+      clearTimeout(typingTimeouts.current[index]);
+    }
+
+    typingTimeouts.current[index] = setTimeout(() => {
+      handleKeyPress(e, item, index);
+    }, 1500); // Delay of 1500ms (1.5 seconds); adjust as needed
+  };
+
   return (
     <Dialog
       open={true}
@@ -230,6 +243,8 @@ const SponsorUpdateModalForWallpaper = ({
                     <div>{iDashCopySponsorInfo}</div>
                     <input
                       onKeyPress={(e) => handleKeyPress(e, item, index)}
+                      onBlur={(e) => handleKeyPress(e, item, index)}
+                      onChange={(e) => handleInputChange(e, item, index)}
                       type="url"
                       defaultValue={
                         item?._id ? `${CLIENT_URL}/w/${item?.slug}` : ""
@@ -280,6 +295,8 @@ const SponsorUpdateModalForWallpaper = ({
                       <div>{iDashCopySponsorInfo}</div>
                       <input
                         onKeyPress={(e) => handleKeyPress(e, item, index)}
+                        onBlur={(e) => handleKeyPress(e, item, index)}
+                        onChange={(e) => handleInputChange(e, item, index)}
                         type="url"
                         defaultValue={
                           item?._id ? `${CLIENT_URL}/w/${item?.slug}` : ""
