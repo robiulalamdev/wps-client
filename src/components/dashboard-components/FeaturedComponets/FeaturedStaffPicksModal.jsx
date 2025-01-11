@@ -182,7 +182,7 @@ const FeaturedStaffPicksModal = ({
 
     typingTimeouts.current[index] = setTimeout(() => {
       handleKeyPress(e, item, index);
-    }, 1500); // Delay of 1500ms (1.5 seconds); adjust as needed
+    }, 1200); // Delay of 1200ms (1.2 seconds); adjust as needed
   };
 
   return (
