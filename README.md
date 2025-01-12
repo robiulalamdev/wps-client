@@ -1,3 +1,3 @@
 ## The Wallpaper Society
 
-## Version: 1.0.5
+## Version: 2.0.0
