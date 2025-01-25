@@ -1,5 +1,5 @@
 ## The Wallpaper Society - WPS
 
-## Version: 2.0.0
+## Version: 2.0.1
 
 ## Live link : www.thewalpapersociety.com
