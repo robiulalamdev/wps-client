@@ -12,12 +12,20 @@ import { CLIENT_URL } from "@/lib/config";
 
 export default function Home() {
   const { viewResizeImg } = useViewImage();
+
   return (
     <>
       <MetaTags
         title="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-        description="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society. Explore this stunning Neon Retro wallpaper featuring vibrant purple ferns. Perfect for a high-definition setup!"
-        image={viewResizeImg("src/assets/images/card.jpg", 400, 400)}
+        description="Explore a curated collection of stunning desktop wallpapers—join us to find the perfect look for your screen."
+        image={viewResizeImg(
+          `src/assets/images/meta/${
+            ["wps-1", "wps-2", "wps-3"][Math.floor(Math.random() * 4)] ||
+            "wps-1"
+          }.png`,
+          400,
+          400
+        )}
         url={CLIENT_URL}
         // username=""
         width={200}
