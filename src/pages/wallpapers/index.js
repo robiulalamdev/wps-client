@@ -33,9 +33,9 @@ const SearchWallpapers = () => {
 
   const queries = `${search ? `search=${search}&` : ""}${
     tn ? `tn=${tn}&` : ""
-  }${type ? `type=${type}&` : ""}${
-    classification ? `classification=${classification}&` : ""
-  }${width && height ? `width=${width}&height=${height}&` : ""}${
+  }${type ? `type=${type}&` : ""}${`classification=${
+    classification || "SFW"
+  }&`}${width && height ? `width=${width}&height=${height}&` : ""}${
     screen_type ? `screen_type=${screen_type}&` : ""
   }${sort_by ? `sort_by=${sort_by}&` : ""}${date ? `date=${date}&` : ""}${
     tag ? `tag=${tag}&` : ""

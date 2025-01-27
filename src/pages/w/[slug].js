@@ -157,7 +157,7 @@ const Wallpaper = ({ wallpaperData }) => {
     <>
       <MetaTags
         title="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society."
-        description="WPS - Free 4K/HD Wallpapers, Ad-Free. Join the Society. Explore this stunning Neon Retro wallpaper featuring vibrant purple ferns. Perfect for a high-definition setup!"
+        description="Explore a curated collection of stunning desktop wallpapers—join us to find the perfect look for your screen."
         image={viewResizeImg(data?.wallpaper, 400, 400)}
         url={`${CLIENT_URL}/w/${slug}`}
         username={data?.author_info?.username}
