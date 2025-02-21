@@ -1,5 +1,4 @@
-// import { BASE_URL } from "../config";
-const BASE_URL = "https://api.thewallpapersociety.com/api/v1";
+import { BASE_URL } from "../config";
 
 const useViewImage = () => {
   const viewImg = (img) => {
