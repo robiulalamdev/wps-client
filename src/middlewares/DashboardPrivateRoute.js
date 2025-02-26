@@ -36,8 +36,6 @@ const DashboardPrivateRoute = (allowedRoles = [], WrappedComponent, Layout) => {
         return ComponentToRender;
       }
     }
-
-    // Wrap with the specified layout
   };
 
   return WithAuthentication;

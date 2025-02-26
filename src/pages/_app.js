@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }) {
               draggable
               pauseOnHover
               theme="colored"
-              style={{ zIndex: "999999999999999" }}
+              style={{ zIndex: "99999999999" }}
             />
             {getLayout(<Component {...pageProps} />)}
             <DisabledUserAction />
@@ -44,5 +44,3 @@ export default function App({ Component, pageProps }) {
     </ThemeProvider>
   );
 }
-
-
